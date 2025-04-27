@@ -17,7 +17,7 @@ TODO: Fill in this table with correct information.
 |---------------------------|--------------|-----------|
 | UCSBDiningCommonsMenuItem |              |           |
 | UCSBOrganization          |              |           |
-| RecommendationRequest     |  Andrew Kim  |           |
+| RecommendationRequest     |  Andrew Kim  |andrewkim102|
 | MenuItemReview            |              |           |
 | HelpRequest               |              |           |
 | Articles                  |              |           |
