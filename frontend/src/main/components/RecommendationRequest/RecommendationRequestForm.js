@@ -2,22 +2,23 @@ import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-function RestaurantForm({
+function RecommendationRequestForm({
   initialContents,
   submitAction,
   buttonLabel = "Create",
 }) {
-  // Stryker disable all
+  // Stryker disable all (We're disabling Mutation Testing)
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm({ defaultValues: initialContents || {} });
+  } = useForm({ defaultValues: initialContents || {} }); // If false, then we input the stuff inside the braces(which are user inputs)
   // Stryker restore all
 
+  // Allows us to go forward and backward in the history stack
   const navigate = useNavigate();
 
-  const testIdPrefix = "RestaurantForm";
+  const testIdPrefix = "RecommendationRequestForm";
 
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
@@ -36,14 +37,14 @@ function RestaurantForm({
       )}
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="name">Name</Form.Label>
+        <Form.Label htmlFor="requesterEmail">requesterEmail</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-name"}
-          id="name"
+          data-testid={testIdPrefix + "-requesterEmail"}
+          id="requesterEmail"
           type="text"
-          isInvalid={Boolean(errors.name)}
-          {...register("name", {
-            required: "Name is required.",
+          isInvalid={Boolean(errors.requesterEmail)}
+          {...register("requesterEmail", {
+            required: "Requester's email is required.",
             maxLength: {
               value: 30,
               message: "Max length 30 characters",
@@ -51,23 +52,23 @@ function RestaurantForm({
           })}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.name?.message}
+          {errors.requesterEmail?.message}
         </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="description">Description</Form.Label>
+        <Form.Label htmlFor="professorEmail">professorEmail</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-description"}
-          id="description"
+          data-testid={testIdPrefix + "-professorEmail"}
+          id="professorEmail"
           type="text"
-          isInvalid={Boolean(errors.description)}
-          {...register("description", {
-            required: "Description is required.",
+          isInvalid={Boolean(errors.professorEmail)}
+          {...register("professorEmail", {
+            required: "Professor's email is required.",
           })}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.description?.message}
+          {errors.professorEmail?.message}
         </Form.Control.Feedback>
       </Form.Group>
 
@@ -76,7 +77,7 @@ function RestaurantForm({
       </Button>
       <Button
         variant="Secondary"
-        onClick={() => navigate(-1)}
+        onClick={() => navigate(-1)} // Likewise to navigate, it's the 'back' button
         data-testid={testIdPrefix + "-cancel"}
       >
         Cancel
@@ -85,4 +86,4 @@ function RestaurantForm({
   );
 }
 
-export default RestaurantForm;
+export default RecommendationRequestForm;
