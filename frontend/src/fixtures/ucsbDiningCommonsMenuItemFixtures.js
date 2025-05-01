@@ -3,26 +3,26 @@ const ucsbDiningCommonsMenuItemFixtures = {
       "id": 2,
       "diningCommonsCode": "Portola",
       "name": "Sushi",
-      "station": "Sushi Bar"
+      "station": "Sushi Bar",
   },
   threeItems: [
     {
       "id": 2,
       "diningCommonsCode": "Portola",
       "name": "Sushi",
-      "station": "Sushi Bar"
+      "station": "Sushi Bar",
     },
     {
       "id": 3,
       "diningCommonsCode": "Carillo",
       "name": "Pizza",
-      "station": "Pizza Station"
+      "station": "Pizza Station",
     },
     {
       "id": 4,
       "diningCommonsCode": "De La Guerra",
       "name": "Salad",
-      "station": "Salad Bar"
+      "station": "Salad Bar",
     },
   ],
 };
