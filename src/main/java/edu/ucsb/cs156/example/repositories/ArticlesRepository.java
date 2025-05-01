@@ -9,5 +9,6 @@ import org.springframework.stereotype.Repository;
 /**
  * Repository for Articles entity
  */
+@Repository
 public interface ArticlesRepository extends CrudRepository<Articles, Long> {
 }
