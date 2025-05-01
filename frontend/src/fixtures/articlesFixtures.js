@@ -1,18 +1,17 @@
 const articlesFixtures = {
     oneArticle: {
       id: 1,
-      title: "Waffle House",
-      url: "https://www.wafflehouse.com/",
-      explanation: "Detailed explanation on Waffle House and operations.",
+      title: "Understanding JavaScript Closures",
+      url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures",
+      explanation: "Detailed explanation on closures in JavaScript.",
       email: "example1@example.com",
       dateAdded: "2022-01-15T09:00:00",
     },
-  
     threeArticles: [
       {
         id: 1,
-        title: "Google",
-        url: "https://www.Google.com/",
+        title: "Understanding JavaScript Closures",
+        url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures",
         explanation: "Detailed explanation on closures in JavaScript.",
         email: "example1@example.com",
         dateAdded: "2022-01-15T09:00:00",
@@ -37,3 +36,4 @@ const articlesFixtures = {
   };
   
   export { articlesFixtures };
+  
