@@ -127,7 +127,7 @@ function ArticlesForm({
           </Form.Group>
         </Col>
       </Row>
-      
+
       <Row>
         <Col>
           <Form.Group className="mb-3">
