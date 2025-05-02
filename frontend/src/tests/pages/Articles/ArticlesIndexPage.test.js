@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ArticleslderIndexPage from "main/pages/Articleslder/ArticleslderIndexPage";
+import ArticleslderIndexPage from "main/pages/Articles/ArticlesIndexPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
