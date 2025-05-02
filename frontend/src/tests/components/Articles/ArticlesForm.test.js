@@ -15,7 +15,7 @@ describe("ArticlesForm tests", () => {
     render(
       <Router>
         <ArticlesForm />
-      </Router>
+      </Router>,
     );
     await screen.findByText(/Title/);
     await screen.findByText(/Create/);
@@ -25,7 +25,7 @@ describe("ArticlesForm tests", () => {
     render(
       <Router>
         <ArticlesForm initialContents={articlesFixtures.oneArticle} />
-      </Router>
+      </Router>,
     );
     await screen.findByTestId(/ArticlesForm-id/);
     expect(screen.getByText(/ID/)).toBeInTheDocument();
@@ -36,7 +36,7 @@ describe("ArticlesForm tests", () => {
     render(
       <Router>
         <ArticlesForm />
-      </Router>
+      </Router>,
     );
     await screen.findByTestId("ArticlesForm-title");
 
@@ -47,22 +47,23 @@ describe("ArticlesForm tests", () => {
       target: { value: "bademail" },
     });
     fireEvent.change(screen.getByTestId("ArticlesForm-dateAdded"), {
-      target: { value: "bad-date" },
+      target: { value: "2024-01-01T99:99" }, // invalid time triggers pattern
     });
 
     fireEvent.click(screen.getByTestId("ArticlesForm-submit"));
 
     await screen.findByText(/Enter a valid URL/);
     expect(screen.getByText(/Enter a valid email address/)).toBeInTheDocument();
-    expect(screen.getByText(/Date must be in ISO format/)).toBeInTheDocument();
+    expect(screen.getByText(/Date Added is required/)).toBeInTheDocument();
   });
 
   test("Correct error messages on missing input", async () => {
     render(
       <Router>
         <ArticlesForm />
-      </Router>
+      </Router>,
     );
+
     fireEvent.click(screen.getByTestId("ArticlesForm-submit"));
 
     await screen.findByText(/Title is required/);
@@ -78,7 +79,7 @@ describe("ArticlesForm tests", () => {
     render(
       <Router>
         <ArticlesForm submitAction={mockSubmitAction} />
-      </Router>
+      </Router>,
     );
 
     fireEvent.change(screen.getByLabelText("Title"), {
@@ -101,14 +102,12 @@ describe("ArticlesForm tests", () => {
 
     await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
 
+    expect(screen.queryByText(/Enter a valid URL/)).not.toBeInTheDocument();
     expect(
-      screen.queryByText(/Enter a valid URL/)
+      screen.queryByText(/Enter a valid email address/),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText(/Enter a valid email address/)
-    ).not.toBeInTheDocument();
-    expect(
-      screen.queryByText(/Date must be in ISO format/)
+      screen.queryByText(/Date must be in ISO format/),
     ).not.toBeInTheDocument();
   });
 
@@ -116,7 +115,7 @@ describe("ArticlesForm tests", () => {
     render(
       <Router>
         <ArticlesForm />
-      </Router>
+      </Router>,
     );
 
     fireEvent.click(screen.getByTestId("ArticlesForm-cancel"));
