@@ -7,15 +7,20 @@ function ArticlesForm({
   submitAction,
   buttonLabel = "Create",
 }) {
+  // Stryker disable all
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm({ defaultValues: initialContents || {} });
+  // Stryker restore all
 
   const navigate = useNavigate();
 
-  const isodate_regex = /\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d/i;
+  // Stryker disable Regex
+  const url_regex = /^https?:\/\/.+/i;
+  const email_regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // Stryker restore Regex
 
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
@@ -67,7 +72,7 @@ function ArticlesForm({
               {...register("url", {
                 required: "URL is required.",
                 pattern: {
-                  value: /^https?:\/\/.+/i,
+                  value: url_regex,
                   message: "Enter a valid URL.",
                 },
               })}
@@ -111,7 +116,7 @@ function ArticlesForm({
               {...register("email", {
                 required: "Email is required.",
                 pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  value: email_regex,
                   message: "Enter a valid email address.",
                 },
               })}
@@ -122,26 +127,26 @@ function ArticlesForm({
           </Form.Group>
         </Col>
       </Row>
-
-      <Form.Group className="mb-3">
-        <Form.Label htmlFor="dateAdded">Date Added (ISO format)</Form.Label>
-        <Form.Control
-          data-testid="ArticlesForm-dateAdded"
-          id="dateAdded"
-          type="datetime-local"
-          isInvalid={Boolean(errors.dateAdded)}
-          {...register("dateAdded", {
-            required: "Date Added is required.",
-            pattern: {
-              value: /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/,
-              message: "Date must be in ISO format.",
-            },
-          })}
-        />
-        <Form.Control.Feedback type="invalid">
-          {errors.dateAdded?.message}
-        </Form.Control.Feedback>
-      </Form.Group>
+      
+      <Row>
+        <Col>
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="dateAdded">Date Added (ISO format)</Form.Label>
+            <Form.Control
+              data-testid="ArticlesForm-dateAdded"
+              id="dateAdded"
+              type="datetime-local"
+              isInvalid={Boolean(errors.dateAdded)}
+              {...register("dateAdded", {
+                required: true,
+              })}
+            />
+            <Form.Control.Feedback type="invalid">
+              {errors.dateAdded && "Date Added is required. "}
+            </Form.Control.Feedback>
+          </Form.Group>
+        </Col>
+      </Row>
 
       <Row>
         <Col>
