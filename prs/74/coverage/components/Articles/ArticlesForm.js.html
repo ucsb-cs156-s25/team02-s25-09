@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -227,7 +227,12 @@
 <a name='L162'></a><a href='#L162'>162</a>
 <a name='L163'></a><a href='#L163'>163</a>
 <a name='L164'></a><a href='#L164'>164</a>
-<a name='L165'></a><a href='#L165'>165</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -242,9 +247,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -390,7 +399,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Button, Form, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -400,15 +408,20 @@ function ArticlesForm({
   submitAction,
   buttonLabel = "Create",
 }) {
+  // Stryker disable all
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm({ defaultValues: initialContents || {} });
+  // Stryker restore all
 &nbsp;
   const navigate = useNavigate();
 &nbsp;
-  const isodate_regex = /\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d/i;
+  // Stryker disable Regex
+  const url_regex = /^https?:\/\/.+/i;
+  const email_regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // Stryker restore Regex
 &nbsp;
   return (
     &lt;Form onSubmit={handleSubmit(submitAction)}&gt;
@@ -460,7 +473,7 @@ function ArticlesForm({
               {...register("url", {
                 required: "URL is required.",
                 pattern: {
-                  value: /^https?:\/\/.+/i,
+                  value: url_regex,
                   message: "Enter a valid URL.",
                 },
               })}
@@ -504,7 +517,7 @@ function ArticlesForm({
               {...register("email", {
                 required: "Email is required.",
                 pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  value: email_regex,
                   message: "Enter a valid email address.",
                 },
               })}
@@ -515,26 +528,26 @@ function ArticlesForm({
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
       &lt;/Row&gt;
-&nbsp;
-      &lt;Form.Group className="mb-3"&gt;
-        &lt;Form.Label htmlFor="dateAdded"&gt;Date Added (ISO format)&lt;/Form.Label&gt;
-        &lt;Form.Control
-          data-testid="ArticlesForm-dateAdded"
-          id="dateAdded"
-          type="datetime-local"
-          isInvalid={Boolean(errors.dateAdded)}
-          {...register("dateAdded", {
-            required: "Date Added is required.",
-            pattern: {
-              value: /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/,
-              message: "Date must be in ISO format.",
-            },
-          })}
-        /&gt;
-        &lt;Form.Control.Feedback type="invalid"&gt;
-          {errors.dateAdded?.message}
-        &lt;/Form.Control.Feedback&gt;
-      &lt;/Form.Group&gt;
+      
+      &lt;Row&gt;
+        &lt;Col&gt;
+          &lt;Form.Group className="mb-3"&gt;
+            &lt;Form.Label htmlFor="dateAdded"&gt;Date Added (ISO format)&lt;/Form.Label&gt;
+            &lt;Form.Control
+              data-testid="ArticlesForm-dateAdded"
+              id="dateAdded"
+              type="datetime-local"
+              isInvalid={Boolean(errors.dateAdded)}
+              {...register("dateAdded", {
+                required: true,
+              })}
+            /&gt;
+            &lt;Form.Control.Feedback type="invalid"&gt;
+              {errors.dateAdded &amp;&amp; "Date Added is required. "}
+            &lt;/Form.Control.Feedback&gt;
+          &lt;/Form.Group&gt;
+        &lt;/Col&gt;
+      &lt;/Row&gt;
 &nbsp;
       &lt;Row&gt;
         &lt;Col&gt;
@@ -554,15 +567,14 @@ function ArticlesForm({
   );
 }
 &nbsp;
-export default ArticlesForm;
-&nbsp;</pre></td></tr></table></pre>
+export default ArticlesForm;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-02T00:59:59.078Z
+                at 2025-05-02T03:35:26.005Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
