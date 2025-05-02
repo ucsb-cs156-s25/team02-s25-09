@@ -4,32 +4,27 @@ import { useBackendMutation } from "main/utils/useBackend";
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-// Helper for DELETE request
-// Stryker disable StringLiteral : hard to test for query caching
-function cellToAxiosParamsDelete(cell) {
-  return {
-    url: "/api/articles",
-    method: "DELETE",
-    params: {
-      id: cell.row.values.id,
-    },
-  };
-}
-// Stryker restore StringLiteral
-
-// Success callback
-// Stryker disable all : hard to test for console logs
-function onDeleteSuccess(message) {
-  console.log("Delete successful:", message);
-}
-// Stryker restore all
-
 export default function ArticlesTable({ articles, currentUser }) {
   const navigate = useNavigate();
 
-  // Stryker disable next-line all : hard to test for navigate
   const editCallback = (cell) => {
     navigate(`/articles/edit/${cell.row.values.id}`);
+  };
+
+  // Helper for DELETE request
+  const cellToAxiosParamsDelete = (cell) => {
+    return {
+      url: "/api/articles",
+      method: "DELETE",
+      params: {
+        id: cell.row.values.id,
+      },
+    };
+  };
+
+  // Success callback
+  const onDeleteSuccess = (message) => {
+    console.log("Delete successful:", message);
   };
 
   // Stryker disable all : hard to test for query caching
@@ -75,6 +70,8 @@ export default function ArticlesTable({ articles, currentUser }) {
   if (hasRole(currentUser, "ROLE_ADMIN")) {
     columns.push(
       ButtonColumn("Edit", "primary", editCallback, "ArticlesTable"),
+    );
+    columns.push(
       ButtonColumn("Delete", "danger", deleteCallback, "ArticlesTable"),
     );
   }

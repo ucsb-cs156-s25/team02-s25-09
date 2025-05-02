@@ -14,7 +14,7 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockedNavigate,
 }));
 
-describe("ArticlesTable tests", () => {
+describe("UserTable tests", () => {
   const queryClient = new QueryClient();
 
   test("Has the expected column headers and content for ordinary user", () => {
@@ -77,7 +77,7 @@ describe("ArticlesTable tests", () => {
     expect(deleteButton).not.toBeInTheDocument();
   });
 
-  test("Has the expected column headers and content for adminUser", () => {
+  test("Has the expected colum headers and content for adminUser", () => {
     const currentUser = currentUserFixtures.adminUser;
 
     render(
@@ -193,6 +193,7 @@ describe("ArticlesTable tests", () => {
     );
 
     // assert - check that the expected content is rendered
+
     await waitFor(() => {
       expect(
         screen.getByTestId(`ArticlesTable-cell-row-0-col-id`),
@@ -208,6 +209,7 @@ describe("ArticlesTable tests", () => {
     fireEvent.click(deleteButton);
 
     // assert - check that the delete endpoint was called
+
     await waitFor(() => expect(axiosMock.history.delete.length).toBe(1));
     expect(axiosMock.history.delete[0].params).toEqual({ id: 1 });
   });

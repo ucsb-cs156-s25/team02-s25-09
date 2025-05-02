@@ -1,33 +1,41 @@
 import React from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { MemoryRouter } from "react-router-dom";
 import ArticlesTable from "main/components/Articles/ArticlesTable";
 import { articlesFixtures } from "fixtures/articlesFixtures";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
+import { http, HttpResponse } from "msw";
 
 export default {
   title: "components/Articles/ArticlesTable",
   component: ArticlesTable,
 };
 
-const queryClient = new QueryClient();
+const Template = (args) => {
+  return <ArticlesTable {...args} />;
+};
 
-const Template = (args) => (
-  <QueryClientProvider client={queryClient}>
-    <MemoryRouter>
-      <ArticlesTable {...args} />
-    </MemoryRouter>
-  </QueryClientProvider>
-);
+export const Empty = Template.bind({});
 
-export const AdminView = Template.bind({});
-AdminView.args = {
+Empty.args = {
+  articles: [],
+};
+
+export const ThreeItemsOrdinaryUser = Template.bind({});
+
+ThreeItemsOrdinaryUser.args = {
+  articles: articlesFixtures.threeArticles,
+  currentUser: currentUserFixtures.userOnly,
+};
+
+export const ThreeItemsAdminUser = Template.bind({});
+ThreeItemsAdminUser.args = {
   articles: articlesFixtures.threeArticles,
   currentUser: currentUserFixtures.adminUser,
 };
 
-export const UserView = Template.bind({});
-UserView.args = {
-  articles: articlesFixtures.threeArticles,
-  currentUser: currentUserFixtures.userOnly,
+ThreeItemsAdminUser.parameters = {
+  msw: [
+    http.delete("/api/articles", () => {
+      return HttpResponse.json({}, { status: 200 });
+    }),
+  ],
 };
