@@ -236,18 +236,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -391,11 +390,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Button, Form, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 &nbsp;
-function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" }) {
+function ArticlesForm({
+  initialContents,
+  submitAction,
+  buttonLabel = "Create",
+}) {
   const {
     register,
     formState: { errors },
@@ -404,8 +408,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
 &nbsp;
   const navigate = useNavigate();
 &nbsp;
-  const isodate_regex =
-    /\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d/i;
+  const isodate_regex = /\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d/i;
 &nbsp;
   return (
     &lt;Form onSubmit={handleSubmit(submitAction)}&gt;
@@ -435,7 +438,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
               type="text"
               isInvalid={Boolean(errors.title)}
               {...register("title", {
-                required: "Title is required."
+                required: "Title is required.",
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
@@ -458,8 +461,8 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
                 required: "URL is required.",
                 pattern: {
                   value: /^https?:\/\/.+/i,
-                  message: "Enter a valid URL."
-                }
+                  message: "Enter a valid URL.",
+                },
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
@@ -479,7 +482,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
               type="text"
               isInvalid={Boolean(errors.explanation)}
               {...register("explanation", {
-                required: "Explanation is required."
+                required: "Explanation is required.",
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
@@ -502,8 +505,8 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
                 required: "Email is required.",
                 pattern: {
                   value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "Enter a valid email address."
-                }
+                  message: "Enter a valid email address.",
+                },
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
@@ -513,29 +516,25 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
         &lt;/Col&gt;
       &lt;/Row&gt;
 &nbsp;
-      &lt;Row&gt;
-        &lt;Col&gt;
-          &lt;Form.Group className="mb-3"&gt;
-            &lt;Form.Label htmlFor="dateAdded"&gt;Date Added (ISO format)&lt;/Form.Label&gt;
-            &lt;Form.Control
-              data-testid="ArticlesForm-dateAdded"
-              id="dateAdded"
-              type="datetime-local"
-              isInvalid={Boolean(errors.dateAdded)}
-              {...register("dateAdded", {
-                required: "Date Added is required.",
-                pattern: {
-                  value: isodate_regex,
-                  message: "Date must be in ISO format."
-                }
-              })}
-            /&gt;
-            &lt;Form.Control.Feedback type="invalid"&gt;
-              {errors.dateAdded?.message}
-            &lt;/Form.Control.Feedback&gt;
-          &lt;/Form.Group&gt;
-        &lt;/Col&gt;
-      &lt;/Row&gt;
+      &lt;Form.Group className="mb-3"&gt;
+        &lt;Form.Label htmlFor="dateAdded"&gt;Date Added (ISO format)&lt;/Form.Label&gt;
+        &lt;Form.Control
+          data-testid="ArticlesForm-dateAdded"
+          id="dateAdded"
+          type="datetime-local"
+          isInvalid={Boolean(errors.dateAdded)}
+          {...register("dateAdded", {
+            required: "Date Added is required.",
+            pattern: {
+              value: /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/,
+              message: "Date must be in ISO format.",
+            },
+          })}
+        /&gt;
+        &lt;Form.Control.Feedback type="invalid"&gt;
+          {errors.dateAdded?.message}
+        &lt;/Form.Control.Feedback&gt;
+      &lt;/Form.Group&gt;
 &nbsp;
       &lt;Row&gt;
         &lt;Col&gt;
@@ -555,14 +554,15 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
   );
 }
 &nbsp;
-export default ArticlesForm;</pre></td></tr></table></pre>
+export default ArticlesForm;
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-02T00:44:44.211Z
+                at 2025-05-02T00:59:59.078Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
