@@ -40,7 +40,7 @@ export default function ArticlesTable({ articles, currentUser }) {
   );
   // Stryker restore all
 
-  // Stryker disable next-line all : 
+  // Stryker disable next-line all
   const deleteCallback = async (cell) => {
     deleteMutation.mutate(cell);
   };
