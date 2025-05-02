@@ -32,5 +32,5 @@ const ucsbOrganizationFixtures = {
     ],
   };
   
-  export { restaurantFixtures };
+  export { ucsbOrganizationFixtures };
   
