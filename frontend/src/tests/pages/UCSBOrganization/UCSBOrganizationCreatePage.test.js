@@ -58,11 +58,13 @@ describe("UCSBOrganizationCreatePage tests", () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByLabelText("Name")).toBeInTheDocument();
+      expect(screen.getByLabelText("OrgTranslationShort")).toBeInTheDocument();
     });
   });
 
-  test("on submit, makes request to backend, and redirects to /ucsborganizations", async () => {
+  
+
+  test("on submit, makes request to backend, and redirects to /UCSBOrganization", async () => {
     const queryClient = new QueryClient();
     const organization = {
       orgCode: "SKY",
@@ -82,20 +84,22 @@ describe("UCSBOrganizationCreatePage tests", () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByLabelText("Organization Code")).toBeInTheDocument();
+      expect(screen.getByLabelText("Org Code")).toBeInTheDocument();
     });
 
-    const orgCodeInput = screen.getByLabelText("Organization Code");
+    const orgCodeInput = screen.getByLabelText("Org Code");
     expect(orgCodeInput).toBeInTheDocument();
 
-    const translationShortInput = screen.getByLabelText("Short Translation");
+    const translationShortInput = screen.getByLabelText("OrgTranslationShort");
     expect(translationShortInput).toBeInTheDocument();
 
-    const translationInput = screen.getByLabelText("Translation");
+    const translationInput = screen.getByLabelText("OrgTranslation");
     expect(translationInput).toBeInTheDocument();
 
-    const inactiveInput = screen.getByLabelText("Translation");
+    const inactiveInput = screen.getByLabelText("OrgTranslation");
     expect(inactiveInput).toBeInTheDocument();
+
+    const createButton = screen.getByText("Create");
 
     fireEvent.change(orgCodeInput, { target: { value: "SKY" } });
     fireEvent.change(translationShortInput, { target: { value: "SKYDIVING CLUB" } });
@@ -108,13 +112,13 @@ describe("UCSBOrganizationCreatePage tests", () => {
       orgCode: "SKY",
       orgTranslationShort: "SKYDIVING CLUB",
       orgTranslation: "SKYDIVING CLUB AT UCSB",
-      inactive: "false"
+      inactive: false
     });
 
     // assert - check that the toast was called with the expected message
     expect(mockToast).toBeCalledWith(
-      "New organization Created - orgCode: SKY orgTranslationShort: SKYDIVING CLUB",
+      "New organization Created - orgCode: SKY , orgTranslationShort: SKYDIVING CLUB",
     );
-    expect(mockNavigate).toBeCalledWith({ to: "/ucsborganizations" });
+    expect(mockNavigate).toBeCalledWith({ to: "/UCSBOrganization" });
   });
 });

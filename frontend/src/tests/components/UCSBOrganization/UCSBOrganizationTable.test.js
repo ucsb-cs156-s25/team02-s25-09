@@ -31,6 +31,59 @@ describe("UCSBOrganizationTable tests", () => {
   ];
   const testId = "UCSBOrganizationTable";
 
+test("renders inactive status correctly", async () => {
+    const currentUser = currentUserFixtures.adminUser;
+    
+    console.log("Fixture data:", ucsbOrganizationFixtures.threeOrganizations);
+  
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <UCSBOrganizationTable
+            organizations={ucsbOrganizationFixtures.threeOrganizations}
+            currentUser={currentUser}
+          />
+        </MemoryRouter>
+      </QueryClientProvider>
+    );
+  
+    expect(
+      await screen.findByTestId(`${testId}-cell-row-0-col-inactive`)
+    ).toHaveTextContent("false"); 
+    
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-inactive`)
+    ).toHaveTextContent("true");
+  
+    expect(
+      screen.getByTestId(`${testId}-cell-row-2-col-inactive`)
+    ).toHaveTextContent("false");
+  });
+
+  test("Does not show Edit/Delete buttons for ordinary user", async () => {
+    const currentUser = currentUserFixtures.userOnly;
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <UCSBOrganizationTable
+            organizations={ucsbOrganizationFixtures.threeOrganizations}
+            currentUser={currentUser}
+          />
+        </MemoryRouter>
+      </QueryClientProvider>
+    );
+
+    await waitFor(() => {
+      expect(
+        screen.queryByTestId(`${testId}-cell-row-0-col-Edit-button`)
+      ).not.toBeInTheDocument();
+      expect(
+        screen.queryByTestId(`${testId}-cell-row-0-col-Delete-button`)
+      ).not.toBeInTheDocument();
+    });
+  });
+
   test("renders empty table correctly", () => {
     const currentUser = currentUserFixtures.adminUser;
 
@@ -144,7 +197,7 @@ describe("UCSBOrganizationTable tests", () => {
 
     await waitFor(() =>
       expect(mockedNavigate).toHaveBeenCalledWith(
-        "/ucsborganizations/edit/SKY",
+        "/UCSBOrganization/edit/SKY",
       ),
     );
   });

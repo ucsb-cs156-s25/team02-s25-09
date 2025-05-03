@@ -3,7 +3,7 @@ import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizat
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import mockConsole from "jest-mock-console";
-import { restaurantFixtures } from "fixtures/restaurantFixtures";
+import { ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
@@ -49,9 +49,17 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
   const queryClient = new QueryClient();
 
+  test("does NOT show create button for regular users", async () => {
+    setupUserOnly(); // Your regular user setup
+    await waitFor(() => {
+      expect(screen.queryByText("Create UCSBOrganization"))
+        .not.toBeInTheDocument();
+    });
+  });
+
   test("Renders with Create Button for admin user", async () => {
     setupAdminUser();
-    axiosMock.onGet("/api/restaurants/all").reply(200, []);
+    axiosMock.onGet("/api/ucsborganizations/all").reply(200, []);
 
     render(
       <QueryClientProvider client={queryClient}>
@@ -65,67 +73,67 @@ describe("UCSBOrganizationIndexPage tests", () => {
       expect(screen.getByText(/Create UCSBOrganization/)).toBeInTheDocument();
     });
     const button = screen.getByText(/Create UCSBOrganization/);
-    expect(button).toHaveAttribute("href", "/restaurants/create");
+    expect(button).toHaveAttribute("href", "/UCSBOrganization/create");
     expect(button).toHaveAttribute("style", "float: right;");
   });
 
-  test("renders three restaurants correctly for regular user", async () => {
+  test("renders three organizations correctly for regular user", async () => {
     setupUserOnly();
     axiosMock
-      .onGet("/api/restaurants/all")
-      .reply(200, restaurantFixtures.threeOrganizations);
+      .onGet("/api/ucsborganizations/all")
+      .reply(200, ucsbOrganizationFixtures.threeOrganizations);
 
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RestaurantIndexPage />
+          <UCSBOrganizationIndexPage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
 
     await waitFor(() => {
       expect(
-        screen.getByTestId(`${testId}-cell-row-0-col-id`),
-      ).toHaveTextContent("2");
+        screen.getByTestId(`${testId}-cell-row-0-col-orgCode`),
+      ).toHaveTextContent("SKY");
     });
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(
-      "3",
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent(
+      "OSLI",
     );
-    expect(screen.getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent(
-      "4",
+    expect(screen.getByTestId(`${testId}-cell-row-2-col-orgCode`)).toHaveTextContent(
+      "KRC",
     );
 
-    const createRestaurantButton = screen.queryByText("Create Restaurant");
-    expect(createRestaurantButton).not.toBeInTheDocument();
+    const createUCSBOrganizationButton = screen.queryByText("Create Organization");
+    expect(createUCSBOrganizationButton).not.toBeInTheDocument();
 
-    const name = screen.getByText("Freebirds");
-    expect(name).toBeInTheDocument();
+    const orgTranslationShort = screen.getByText("SKYDIVING CLUB");
+    expect(orgTranslationShort).toBeInTheDocument();
 
-    const description = screen.getByText(
-      "Burrito joint, and iconic Isla Vista location",
+    const orgTranslation = screen.getByText(
+      "SKYDIVING CLUB AT UCSB",
     );
-    expect(description).toBeInTheDocument();
+    expect(orgTranslation).toBeInTheDocument();
 
     // for non-admin users, details button is visible, but the edit and delete buttons should not be visible
     expect(
-      screen.queryByTestId("RestaurantTable-cell-row-0-col-Delete-button"),
+      screen.queryByTestId("UCSBOrganizationTable-cell-row-0-col-Delete-button"),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByTestId("RestaurantTable-cell-row-0-col-Edit-button"),
+      screen.queryByTestId("UCSBOrganizationTable-cell-row-0-col-Edit-button"),
     ).not.toBeInTheDocument();
   });
 
   test("renders empty table when backend unavailable, user only", async () => {
     setupUserOnly();
 
-    axiosMock.onGet("/api/restaurants/all").timeout();
+    axiosMock.onGet("/api/ucsborganizations/all").timeout();
 
     const restoreConsole = mockConsole();
 
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RestaurantIndexPage />
+          <UCSBOrganizationIndexPage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
@@ -136,7 +144,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
     const errorMessage = console.error.mock.calls[0][0];
     expect(errorMessage).toMatch(
-      "Error communicating with backend via GET on /api/restaurants/all",
+      "Error communicating with backend via GET on /api/ucsborganizations/all",
     );
     restoreConsole();
   });
@@ -145,28 +153,28 @@ describe("UCSBOrganizationIndexPage tests", () => {
     setupAdminUser();
 
     axiosMock
-      .onGet("/api/restaurants/all")
-      .reply(200, restaurantFixtures.threeOrganizations);
+      .onGet("/api/ucsborganizations/all")
+      .reply(200, ucsbOrganizationFixtures.threeOrganizations);
     axiosMock
-      .onDelete("/api/restaurants")
-      .reply(200, "Restaurant with id 1 was deleted");
+      .onDelete("/api/ucsborganizations")
+      .reply(200, "UCSBOrganization with orgCode SKY was deleted");
 
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RestaurantIndexPage />
+          <UCSBOrganizationIndexPage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
 
     await waitFor(() => {
       expect(
-        screen.getByTestId(`${testId}-cell-row-0-col-id`),
+        screen.getByTestId(`${testId}-cell-row-0-col-orgCode`),
       ).toBeInTheDocument();
     });
 
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent(
-      "2",
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent(
+      "SKY",
     );
 
     const deleteButton = screen.getByTestId(
@@ -177,14 +185,77 @@ describe("UCSBOrganizationIndexPage tests", () => {
     fireEvent.click(deleteButton);
 
     await waitFor(() => {
-      expect(mockToast).toBeCalledWith("Restaurant with id 1 was deleted");
+      expect(mockToast).toBeCalledWith("UCSBOrganization with orgCode SKY was deleted");
     });
 
     await waitFor(() => {
       expect(axiosMock.history.delete.length).toBe(1);
     });
-    expect(axiosMock.history.delete[0].url).toBe("/api/restaurants");
-    expect(axiosMock.history.delete[0].url).toBe("/api/restaurants");
-    expect(axiosMock.history.delete[0].params).toEqual({ id: 2 });
+    expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganizations");
+    expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganizations");
+    expect(axiosMock.history.delete[0].params).toEqual({ orgCode: "SKY" });
+  });
+});
+
+// In UCSBOrganizationIndexPage.test.js
+describe("Admin check conditional rendering", () => {
+  test("Create button appears ONLY for admins", async () => {
+    const axiosMock = new AxiosMockAdapter(axios);
+
+    const testId = "UCSBOrganizationTable";
+  
+    const queryClient = new QueryClient();
+    
+    const setupUserOnly = () => {
+      axiosMock.reset();
+      axiosMock.resetHistory();
+      axiosMock
+        .onGet("/api/currentUser")
+        .reply(200, apiCurrentUserFixtures.userOnly);
+      axiosMock
+        .onGet("/api/systemInfo")
+        .reply(200, systemInfoFixtures.showingNeither);
+    };
+    const setupAdminUser = () => {
+      axiosMock.reset();
+      axiosMock.resetHistory();
+      axiosMock
+        .onGet("/api/currentUser")
+        .reply(200, apiCurrentUserFixtures.adminUser);
+      axiosMock
+        .onGet("/api/systemInfo")
+        .reply(200, systemInfoFixtures.showingNeither);
+    };
+
+    setupAdminUser();
+    axiosMock.onGet("/api/ucsborganizations/all").reply(200, []);
+    
+    const { rerender } = render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <UCSBOrganizationIndexPage />
+        </MemoryRouter>
+      </QueryClientProvider>
+    );
+
+  
+
+    await waitFor(() => {
+      expect(screen.getByText(/Create UCSBOrganization/)).toBeInTheDocument();
+    });
+
+    // Test regular user
+    setupUserOnly();
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <UCSBOrganizationIndexPage />
+        </MemoryRouter>
+      </QueryClientProvider>
+    );
+
+    await waitFor(() => {
+      expect(screen.queryByText(/Create UCSBOrganization/)).not.toBeInTheDocument();
+    });
   });
 });
