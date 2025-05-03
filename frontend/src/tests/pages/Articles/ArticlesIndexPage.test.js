@@ -175,7 +175,7 @@ describe("ArticlesIndexPage tests", () => {
 
     // act
     fireEvent.click(deleteButton);
-    
+
     // Manually call mockToast with the expected message
     mockToast("Article with id 1 was deleted");
 
