@@ -39,7 +39,9 @@ function OrganizationForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="orgTranslationShort">OrgTranslationShort</Form.Label>
+        <Form.Label htmlFor="orgTranslationShort">
+          OrgTranslationShort
+        </Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-orgTranslationShort"}
           id="orgTranslationShort"
@@ -75,14 +77,14 @@ function OrganizationForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-  <Form.Check
-    data-testid={testIdPrefix + "-inactive"}
-    id="inactive"
-    type="checkbox"
-    label="Inactive"
-    {...register("inactive")}
-  />
-</Form.Group>
+        <Form.Check
+          data-testid={testIdPrefix + "-inactive"}
+          id="inactive"
+          type="checkbox"
+          label="Inactive"
+          {...register("inactive")}
+        />
+      </Form.Group>
 
       <Button type="submit" data-testid={testIdPrefix + "-submit"}>
         {buttonLabel}

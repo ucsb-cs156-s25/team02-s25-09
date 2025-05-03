@@ -16,7 +16,12 @@ jest.mock("react-router-dom", () => ({
 describe("UCSBOrganizationForm tests", () => {
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["Org Code", "OrgTranslationShort", "OrgTranslation", "Inactive"];
+  const expectedHeaders = [
+    "Org Code",
+    "OrgTranslationShort",
+    "OrgTranslation",
+    "Inactive",
+  ];
   const testId = "UCSBOrganizationForm";
 
   test("renders correctly with no initialContents", async () => {
@@ -40,7 +45,9 @@ describe("UCSBOrganizationForm tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <Router>
-          <UCSBOrganizationForm initialContents={ucsbOrganizationFixtures.oneOrganization} />
+          <UCSBOrganizationForm
+            initialContents={ucsbOrganizationFixtures.oneOrganization}
+          />
         </Router>
       </QueryClientProvider>,
     );
@@ -86,12 +93,19 @@ describe("UCSBOrganizationForm tests", () => {
     fireEvent.click(submitButton);
 
     await screen.findByText(/Organization Code is required/);
-    expect(screen.getByText(/Organization Translation Short is required/)).toBeInTheDocument();
-    expect(screen.getByText(/Organization Translation is required/)).toBeInTheDocument();
-    
+    expect(
+      screen.getByText(/Organization Translation Short is required/),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Organization Translation is required/),
+    ).toBeInTheDocument();
 
-    const orgTranslationShortInput = screen.getByTestId(`${testId}-orgTranslationShort`);
-    fireEvent.change(orgTranslationShortInput, { target: { value: "a".repeat(31) } });
+    const orgTranslationShortInput = screen.getByTestId(
+      `${testId}-orgTranslationShort`,
+    );
+    fireEvent.change(orgTranslationShortInput, {
+      target: { value: "a".repeat(31) },
+    });
     fireEvent.click(submitButton);
 
     await waitFor(() => {
