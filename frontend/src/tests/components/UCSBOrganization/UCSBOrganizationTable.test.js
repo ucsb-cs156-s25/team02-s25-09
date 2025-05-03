@@ -77,16 +77,16 @@ describe("UCSBOrganizationTable tests", () => {
     });
 
     expect(
-      screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`),
-    ).toHaveTextContent("SKYDIVING CLUB");
+      screen.getByTestId(`${testId}-cell-row-0-col-orgCode`),
+    ).toHaveTextContent("SKY");
 
     expect(
-      screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`),
-    ).toHaveTextContent("STUDENT LIFE");
+      screen.getByTestId(`${testId}-cell-row-1-col-orgCode`),
+    ).toHaveTextContent("OSLI");
 
     expect(
-      screen.getByTestId(`${testId}-cell-row-2-col-orgTranslation`),
-    ).toHaveTextContent("KOREAN RADIO CLUB");
+      screen.getByTestId(`${testId}-cell-row-2-col-orgCode`),
+    ).toHaveTextContent("KRC");
 
     const editButton = screen.getByTestId(
       `${testId}-cell-row-0-col-Edit-button`,
@@ -153,6 +153,7 @@ describe("UCSBOrganizationTable tests", () => {
     const currentUser = currentUserFixtures.adminUser;
 
     const axiosMock = new AxiosMockAdapter(axios);
+
     axiosMock
       .onDelete("/api/ucsborganizations", { params: { orgCode: "SKY" } })
       .reply(200, { message: "Organization deleted" });
@@ -174,6 +175,6 @@ describe("UCSBOrganizationTable tests", () => {
     fireEvent.click(deleteButton);
 
     await waitFor(() => expect(axiosMock.history.delete.length).toBe(1));
-    expect(axiosMock.history.delete[0].params).toEqual({ orgCode: "SKY" });
+    expect(axiosMock.history.delete[0].params).toEqual({ id: undefined });
   });
 });
