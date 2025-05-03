@@ -52,8 +52,9 @@ describe("UCSBOrganizationIndexPage tests", () => {
   test("does NOT show create button for regular users", async () => {
     setupUserOnly(); // Your regular user setup
     await waitFor(() => {
-      expect(screen.queryByText("Create UCSBOrganization"))
-        .not.toBeInTheDocument();
+      expect(
+        screen.queryByText("Create UCSBOrganization"),
+      ).not.toBeInTheDocument();
     });
   });
 
@@ -96,27 +97,29 @@ describe("UCSBOrganizationIndexPage tests", () => {
         screen.getByTestId(`${testId}-cell-row-0-col-orgCode`),
       ).toHaveTextContent("SKY");
     });
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent(
-      "OSLI",
-    );
-    expect(screen.getByTestId(`${testId}-cell-row-2-col-orgCode`)).toHaveTextContent(
-      "KRC",
-    );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-orgCode`),
+    ).toHaveTextContent("OSLI");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-2-col-orgCode`),
+    ).toHaveTextContent("KRC");
 
-    const createUCSBOrganizationButton = screen.queryByText("Create Organization");
+    const createUCSBOrganizationButton = screen.queryByText(
+      "Create Organization",
+    );
     expect(createUCSBOrganizationButton).not.toBeInTheDocument();
 
     const orgTranslationShort = screen.getByText("SKYDIVING CLUB");
     expect(orgTranslationShort).toBeInTheDocument();
 
-    const orgTranslation = screen.getByText(
-      "SKYDIVING CLUB AT UCSB",
-    );
+    const orgTranslation = screen.getByText("SKYDIVING CLUB AT UCSB");
     expect(orgTranslation).toBeInTheDocument();
 
     // for non-admin users, details button is visible, but the edit and delete buttons should not be visible
     expect(
-      screen.queryByTestId("UCSBOrganizationTable-cell-row-0-col-Delete-button"),
+      screen.queryByTestId(
+        "UCSBOrganizationTable-cell-row-0-col-Delete-button",
+      ),
     ).not.toBeInTheDocument();
     expect(
       screen.queryByTestId("UCSBOrganizationTable-cell-row-0-col-Edit-button"),
@@ -173,9 +176,9 @@ describe("UCSBOrganizationIndexPage tests", () => {
       ).toBeInTheDocument();
     });
 
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent(
-      "SKY",
-    );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgCode`),
+    ).toHaveTextContent("SKY");
 
     const deleteButton = screen.getByTestId(
       `${testId}-cell-row-0-col-Delete-button`,
@@ -185,7 +188,9 @@ describe("UCSBOrganizationIndexPage tests", () => {
     fireEvent.click(deleteButton);
 
     await waitFor(() => {
-      expect(mockToast).toBeCalledWith("UCSBOrganization with orgCode SKY was deleted");
+      expect(mockToast).toBeCalledWith(
+        "UCSBOrganization with orgCode SKY was deleted",
+      );
     });
 
     await waitFor(() => {
@@ -203,9 +208,9 @@ describe("Admin check conditional rendering", () => {
     const axiosMock = new AxiosMockAdapter(axios);
 
     const testId = "UCSBOrganizationTable";
-  
+
     const queryClient = new QueryClient();
-    
+
     const setupUserOnly = () => {
       axiosMock.reset();
       axiosMock.resetHistory();
@@ -229,16 +234,14 @@ describe("Admin check conditional rendering", () => {
 
     setupAdminUser();
     axiosMock.onGet("/api/ucsborganizations/all").reply(200, []);
-    
+
     const { rerender } = render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <UCSBOrganizationIndexPage />
         </MemoryRouter>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
-
-  
 
     await waitFor(() => {
       expect(screen.getByText(/Create UCSBOrganization/)).toBeInTheDocument();
@@ -251,11 +254,13 @@ describe("Admin check conditional rendering", () => {
         <MemoryRouter>
           <UCSBOrganizationIndexPage />
         </MemoryRouter>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
     await waitFor(() => {
-      expect(screen.queryByText(/Create UCSBOrganization/)).not.toBeInTheDocument();
+      expect(
+        screen.queryByText(/Create UCSBOrganization/),
+      ).not.toBeInTheDocument();
     });
   });
 });

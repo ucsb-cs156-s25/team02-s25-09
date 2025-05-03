@@ -62,15 +62,13 @@ describe("UCSBOrganizationCreatePage tests", () => {
     });
   });
 
-  
-
   test("on submit, makes request to backend, and redirects to /UCSBOrganization", async () => {
     const queryClient = new QueryClient();
     const organization = {
       orgCode: "SKY",
       orgTranslationShort: "SKYDIVING CLUB",
       orgTranslation: "SKYDIVING CLUB AT UCSB",
-      inactive: false
+      inactive: false,
     };
 
     axiosMock.onPost("/api/ucsborganizations/post").reply(202, organization);
@@ -102,8 +100,12 @@ describe("UCSBOrganizationCreatePage tests", () => {
     const createButton = screen.getByText("Create");
 
     fireEvent.change(orgCodeInput, { target: { value: "SKY" } });
-    fireEvent.change(translationShortInput, { target: { value: "SKYDIVING CLUB" } });
-    fireEvent.change(translationInput, { target: { value: "SKYDIVING CLUB AT UCSB" } });
+    fireEvent.change(translationShortInput, {
+      target: { value: "SKYDIVING CLUB" },
+    });
+    fireEvent.change(translationInput, {
+      target: { value: "SKYDIVING CLUB AT UCSB" },
+    });
     fireEvent.click(createButton);
 
     await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
@@ -112,7 +114,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
       orgCode: "SKY",
       orgTranslationShort: "SKYDIVING CLUB",
       orgTranslation: "SKYDIVING CLUB AT UCSB",
-      inactive: false
+      inactive: false,
     });
 
     // assert - check that the toast was called with the expected message

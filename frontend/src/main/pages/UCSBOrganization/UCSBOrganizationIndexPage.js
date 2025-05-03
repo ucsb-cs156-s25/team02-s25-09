@@ -41,7 +41,10 @@ export default function UCSBOrganizationIndexPage() {
       <div className="pt-2">
         {createButton()}
         <h1>UCSB Organization</h1>
-        <UCSBOrganizationTable organizations={organizations} currentUser={currentUser} />
+        <UCSBOrganizationTable
+          organizations={organizations}
+          currentUser={currentUser}
+        />
       </div>
     </BasicLayout>
   );

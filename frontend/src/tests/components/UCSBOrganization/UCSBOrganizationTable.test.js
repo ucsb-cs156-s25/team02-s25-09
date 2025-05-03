@@ -31,11 +31,11 @@ describe("UCSBOrganizationTable tests", () => {
   ];
   const testId = "UCSBOrganizationTable";
 
-test("renders inactive status correctly", async () => {
+  test("renders inactive status correctly", async () => {
     const currentUser = currentUserFixtures.adminUser;
-    
+
     console.log("Fixture data:", ucsbOrganizationFixtures.threeOrganizations);
-  
+
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
@@ -44,19 +44,19 @@ test("renders inactive status correctly", async () => {
             currentUser={currentUser}
           />
         </MemoryRouter>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
-  
+
     expect(
-      await screen.findByTestId(`${testId}-cell-row-0-col-inactive`)
-    ).toHaveTextContent("false"); 
-    
+      await screen.findByTestId(`${testId}-cell-row-0-col-inactive`),
+    ).toHaveTextContent("false");
+
     expect(
-      screen.getByTestId(`${testId}-cell-row-1-col-inactive`)
+      screen.getByTestId(`${testId}-cell-row-1-col-inactive`),
     ).toHaveTextContent("true");
-  
+
     expect(
-      screen.getByTestId(`${testId}-cell-row-2-col-inactive`)
+      screen.getByTestId(`${testId}-cell-row-2-col-inactive`),
     ).toHaveTextContent("false");
   });
 
@@ -71,15 +71,15 @@ test("renders inactive status correctly", async () => {
             currentUser={currentUser}
           />
         </MemoryRouter>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
     await waitFor(() => {
       expect(
-        screen.queryByTestId(`${testId}-cell-row-0-col-Edit-button`)
+        screen.queryByTestId(`${testId}-cell-row-0-col-Edit-button`),
       ).not.toBeInTheDocument();
       expect(
-        screen.queryByTestId(`${testId}-cell-row-0-col-Delete-button`)
+        screen.queryByTestId(`${testId}-cell-row-0-col-Delete-button`),
       ).not.toBeInTheDocument();
     });
   });
@@ -90,10 +90,7 @@ test("renders inactive status correctly", async () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UCSBOrganizationTable
-            organizations={[]}
-            currentUser={currentUser}
-          />
+          <UCSBOrganizationTable organizations={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>,
     );
@@ -196,9 +193,7 @@ test("renders inactive status correctly", async () => {
     fireEvent.click(editButton);
 
     await waitFor(() =>
-      expect(mockedNavigate).toHaveBeenCalledWith(
-        "/UCSBOrganization/edit/SKY",
-      ),
+      expect(mockedNavigate).toHaveBeenCalledWith("/UCSBOrganization/edit/SKY"),
     );
   });
 

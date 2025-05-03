@@ -49,9 +49,9 @@ export default function UCSBOrganizationTable({
       accessor: "orgTranslation",
     },
     {
-        Header: "Inactive",
-        accessor: (row) => row.inactive ? "true" : "false", // display as string
-        id: "inactive",
+      Header: "Inactive",
+      accessor: (row) => (row.inactive ? "true" : "false"), // display as string
+      id: "inactive",
     },
   ];
 

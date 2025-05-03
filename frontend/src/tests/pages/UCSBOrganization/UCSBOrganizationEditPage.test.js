@@ -48,7 +48,9 @@ describe("UCSBOrganizationEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/ucsborganizations", { params: { orgCode: "SKY" } }).timeout();
+      axiosMock
+        .onGet("/api/ucsborganizations", { params: { orgCode: "SKY" } })
+        .timeout();
     });
 
     const queryClient = new QueryClient();
@@ -63,7 +65,9 @@ describe("UCSBOrganizationEditPage tests", () => {
         </QueryClientProvider>,
       );
       await screen.findByText("Edit UCSBOrganization");
-      expect(screen.queryByTestId("UCSBOrganization-orgTranslationShort")).not.toBeInTheDocument();
+      expect(
+        screen.queryByTestId("UCSBOrganization-orgTranslationShort"),
+      ).not.toBeInTheDocument();
       restoreConsole();
     });
   });
@@ -80,12 +84,14 @@ describe("UCSBOrganizationEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/ucsborganizations", { params: { orgCode: "SKY" } }).reply(200, {
-        orgCode: "SKY",
-        orgTranslationShort: "SKYDIVING CLUB",
-        orgTranslation: "SKYDIVING CLUB AT UCSB",
-        inactive: false,
-      });
+      axiosMock
+        .onGet("/api/ucsborganizations", { params: { orgCode: "SKY" } })
+        .reply(200, {
+          orgCode: "SKY",
+          orgTranslationShort: "SKYDIVING CLUB",
+          orgTranslation: "SKYDIVING CLUB AT UCSB",
+          inactive: false,
+        });
       axiosMock.onPut("/api/ucsborganizations").reply(200, {
         orgCode: "SKY",
         orgTranslationShort: "SKYDIVING CLUB NEW",
@@ -108,8 +114,12 @@ describe("UCSBOrganizationEditPage tests", () => {
       await screen.findByTestId("UCSBOrganizationForm-orgCode");
 
       const orgCodeField = screen.getByTestId("UCSBOrganizationForm-orgCode");
-      const orgTranslationShortField = screen.getByTestId("UCSBOrganizationForm-orgTranslationShort");
-      const orgTranslationField = screen.getByTestId("UCSBOrganizationForm-orgTranslation");
+      const orgTranslationShortField = screen.getByTestId(
+        "UCSBOrganizationForm-orgTranslationShort",
+      );
+      const orgTranslationField = screen.getByTestId(
+        "UCSBOrganizationForm-orgTranslation",
+      );
       const inactiveField = screen.getByTestId("UCSBOrganizationForm-inactive");
       const submitButton = screen.getByTestId("UCSBOrganizationForm-submit");
 
@@ -163,8 +173,12 @@ describe("UCSBOrganizationEditPage tests", () => {
       await screen.findByTestId("UCSBOrganizationForm-orgCode");
 
       const orgCodeField = screen.getByTestId("UCSBOrganizationForm-orgCode");
-      const orgTranslationShortField = screen.getByTestId("UCSBOrganizationForm-orgTranslationShort");
-      const orgTranslationField = screen.getByTestId("UCSBOrganizationForm-orgTranslation");
+      const orgTranslationShortField = screen.getByTestId(
+        "UCSBOrganizationForm-orgTranslationShort",
+      );
+      const orgTranslationField = screen.getByTestId(
+        "UCSBOrganizationForm-orgTranslation",
+      );
       const inactiveField = screen.getByTestId("UCSBOrganizationForm-inactive");
       const submitButton = screen.getByTestId("UCSBOrganizationForm-submit");
 
@@ -177,7 +191,9 @@ describe("UCSBOrganizationEditPage tests", () => {
       fireEvent.change(orgTranslationShortField, {
         target: { value: "SKYDIVING CLUB NEW" },
       });
-      fireEvent.change(orgTranslationField, { target: { value: "NEW SKYDIVING CLUB AT UCSB" } });
+      fireEvent.change(orgTranslationField, {
+        target: { value: "NEW SKYDIVING CLUB AT UCSB" },
+      });
 
       fireEvent.click(submitButton);
 
