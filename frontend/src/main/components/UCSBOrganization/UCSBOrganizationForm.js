@@ -17,7 +17,7 @@ function OrganizationForm({
 
   const navigate = useNavigate();
 
-  const testIdPrefix = "OrganizationForm";
+  const testIdPrefix = "UCSBOrganizationForm";
 
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
