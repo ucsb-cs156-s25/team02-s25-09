@@ -49,6 +49,25 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
   const queryClient = new QueryClient();
 
+  setupUserOnly();
+  test("Create button appears ONLY for admins", async () => {
+    axiosMock.onGet("/api/ucsborganizations/all").reply(200, []);
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <UCSBOrganizationIndexPage />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+
+    await waitFor(() => {
+      expect(
+        screen.queryByText(/Create UCSBOrganization/),
+      ).not.toBeInTheDocument();
+    });
+  });
+
+  setupAdminUser();
   test("does NOT show create button for regular users", async () => {
     setupUserOnly(); // Your regular user setup
     await waitFor(() => {
@@ -199,68 +218,5 @@ describe("UCSBOrganizationIndexPage tests", () => {
     expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganizations");
     expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganizations");
     expect(axiosMock.history.delete[0].params).toEqual({ orgCode: "SKY" });
-  });
-});
-
-// In UCSBOrganizationIndexPage.test.js
-describe("Admin check conditional rendering", () => {
-  test("Create button appears ONLY for admins", async () => {
-    const axiosMock = new AxiosMockAdapter(axios);
-
-    const testId = "UCSBOrganizationTable";
-
-    const queryClient = new QueryClient();
-
-    const setupUserOnly = () => {
-      axiosMock.reset();
-      axiosMock.resetHistory();
-      axiosMock
-        .onGet("/api/currentUser")
-        .reply(200, apiCurrentUserFixtures.userOnly);
-      axiosMock
-        .onGet("/api/systemInfo")
-        .reply(200, systemInfoFixtures.showingNeither);
-    };
-    const setupAdminUser = () => {
-      axiosMock.reset();
-      axiosMock.resetHistory();
-      axiosMock
-        .onGet("/api/currentUser")
-        .reply(200, apiCurrentUserFixtures.adminUser);
-      axiosMock
-        .onGet("/api/systemInfo")
-        .reply(200, systemInfoFixtures.showingNeither);
-    };
-
-    setupAdminUser();
-    axiosMock.onGet("/api/ucsborganizations/all").reply(200, []);
-
-    const { rerender } = render(
-      <QueryClientProvider client={queryClient}>
-        <MemoryRouter>
-          <UCSBOrganizationIndexPage />
-        </MemoryRouter>
-      </QueryClientProvider>,
-    );
-
-    await waitFor(() => {
-      expect(screen.getByText(/Create UCSBOrganization/)).toBeInTheDocument();
-    });
-
-    // Test regular user
-    setupUserOnly();
-    render(
-      <QueryClientProvider client={queryClient}>
-        <MemoryRouter>
-          <UCSBOrganizationIndexPage />
-        </MemoryRouter>
-      </QueryClientProvider>,
-    );
-
-    await waitFor(() => {
-      expect(
-        screen.queryByText(/Create UCSBOrganization/),
-      ).not.toBeInTheDocument();
-    });
   });
 });

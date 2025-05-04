@@ -11,6 +11,10 @@ import RestaurantIndexPage from "main/pages/Restaurants/RestaurantIndexPage";
 import RestaurantCreatePage from "main/pages/Restaurants/RestaurantCreatePage";
 import RestaurantEditPage from "main/pages/Restaurants/RestaurantEditPage";
 
+import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
+import ArticlesCreatePage from "main/pages/Articles/ArticlesCreatePage";
+import ArticlesEditPage from "main/pages/Articles/ArticlesEditPage";
+
 import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
 import UCSBOrganizationCreatePage from "main/pages/UCSBOrganization/UCSBOrganizationCreatePage";
 import UCSBOrganizationEditPage from "main/pages/UCSBOrganization/UCSBOrganizationEditPage";
