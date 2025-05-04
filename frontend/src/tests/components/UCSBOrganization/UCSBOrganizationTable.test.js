@@ -78,6 +78,9 @@ describe("UCSBOrganizationTable tests", () => {
       expect(
         screen.queryByTestId(`${testId}-cell-row-0-col-Edit-button`),
       ).not.toBeInTheDocument();
+    });
+
+    await waitFor(() => {
       expect(
         screen.queryByTestId(`${testId}-cell-row-0-col-Delete-button`),
       ).not.toBeInTheDocument();
@@ -151,7 +154,7 @@ describe("UCSBOrganizationTable tests", () => {
     expect(deleteButton).toHaveClass("btn-danger");
   });
 
-  test("Does not show Edit/Delete buttons for ordinary user", () => {
+  test("Displays org info without Edit/Delete buttons for ordinary user", () => {
     const currentUser = currentUserFixtures.userOnly;
 
     render(
