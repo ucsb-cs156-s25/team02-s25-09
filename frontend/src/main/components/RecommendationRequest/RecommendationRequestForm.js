@@ -2,16 +2,20 @@ import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
+
+export function removeZ(myString) {
+    return myString.replace("Z", "");
+}
+
 function RecommendationRequestForm({
   initialContents,
   submitAction,
   buttonLabel = "Create",
 }) {
 
-
   const defaultValues = initialContents ? {
-    dateRequested: initialContents.dateRequested.replace("Z", ""),
-    dateNeeded:    initialContents.dateNeeded.replace("Z", ""),
+    dateRequested: removeZ(initialContents.dateRequested),
+    dateNeeded:    removeZ(initialContents.dateNeeded)
   } : {};
 
 
@@ -57,7 +61,7 @@ function RecommendationRequestForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="requesterEmail">Requester's Email</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-requesterEmail"}
+          // data-testid={testIdPrefix + "-requesterEmail"}
           id="requesterEmail"
           type="text"
           isInvalid={Boolean(errors.requesterEmail)}
@@ -77,7 +81,7 @@ function RecommendationRequestForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="professorEmail">Professor's Email</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-professorEmail"}
+          // data-testid={testIdPrefix + "-professorEmail"}
           id="professorEmail"
           type="text"
           isInvalid={Boolean(errors.professorEmail)}
@@ -117,7 +121,7 @@ function RecommendationRequestForm({
       <Form.Group className="mb-3">
             <Form.Label htmlFor="dateRequested">Date Requested</Form.Label>
             <Form.Control
-              data-testid={testIdPrefix + "-dateRequested"}
+              // data-testid={testIdPrefix + "-dateRequested"}
               id="dateRequested"
               type="datetime-local"
               isInvalid={Boolean(errors.dateRequested)}
@@ -134,7 +138,7 @@ function RecommendationRequestForm({
           <Form.Group className="mb-3">
             <Form.Label htmlFor="dateNeeded">Date Needed</Form.Label>
             <Form.Control
-              data-testid={testIdPrefix + "-dateNeeded"}
+              // data-testid={testIdPrefix + "-dateNeeded"}
               id="dateNeeded"
               type="datetime-local"
               isInvalid={Boolean(errors.dateNeeded)}
@@ -153,7 +157,7 @@ function RecommendationRequestForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="done">Done</Form.Label>
         <Form.Select
-          data-testid={testIdPrefix + "-done"}
+          // data-testid={testIdPrefix + "-done"}
           id="done"
           isInvalid={Boolean(errors.done)}
           {...register("done", {
