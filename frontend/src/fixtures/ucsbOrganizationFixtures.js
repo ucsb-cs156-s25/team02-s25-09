@@ -8,7 +8,7 @@ const ucsbOrganizationFixtures = {
     },
   ],
 
-  threeRestaurants: [
+  threeOrganizations: [
     {
       orgCode: "SKY",
       orgTranslationShort: "SKYDIVING CLUB",
@@ -20,7 +20,7 @@ const ucsbOrganizationFixtures = {
       orgCode: "OSLI",
       orgTranslationShort: "STUDENT LIFE",
       orgTranslation: "OFFICE OF STUDENT LIFE",
-      inactive: false,
+      inactive: true,
     },
 
     {
