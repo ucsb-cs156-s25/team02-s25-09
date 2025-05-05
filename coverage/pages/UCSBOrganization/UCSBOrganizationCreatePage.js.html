@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for pages/Articles/ArticlesCreatePage.js</title>
+    <title>Code coverage report for pages/UCSBOrganization/UCSBOrganizationCreatePage.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/Articles</a> ArticlesCreatePage.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/UCSBOrganization</a> UCSBOrganizationCreatePage.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -131,9 +131,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
@@ -162,35 +163,35 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-import ArticlesForm from "main/components/Articles/ArticlesForm";
+import UCSBOrganizationForm from "main/components/UCSBOrganization/UCSBOrganizationForm";
 import { Navigate } from "react-router-dom";
 import { useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 &nbsp;
-export default function ArticlesCreatePage({ storybook = false }) {
-  const objectToAxiosParams = (article) =&gt; ({
-    url: "/api/articles/post",
+export default function UCSBOrganizationCreatePage({ storybook = false }) {
+  const objectToAxiosParams = (organization) =&gt; ({
+    url: "/api/ucsborganizations/post",
     method: "POST",
     params: {
-      title: article.title,
-      url: article.url,
-      explanation: article.explanation,
-      email: article.email,
-      dateAdded: article.dateAdded,
+      orgCode: organization.orgCode,
+      orgTranslationShort: organization.orgTranslationShort,
+      orgTranslation: organization.orgTranslation,
+      inactive: organization.inactive,
     },
   });
 &nbsp;
-  const onSuccess = (article) =&gt; {
-    toast(`New article Created - id: ${article.id} title: ${article.title}`);
+  const onSuccess = (organization) =&gt; {
+    toast(
+      `New organization Created - orgCode: ${organization.orgCode} , orgTranslationShort: ${organization.orgTranslationShort}`,
+    );
   };
 &nbsp;
   const mutation = useBackendMutation(
     objectToAxiosParams,
     { onSuccess },
     // Stryker disable next-line all : hard to set up test for caching
-    ["/api/articles/all"],
+    ["/api/ucsborganizations/all"], // mutation makes this key stale so that pages relying on it reload
   );
 &nbsp;
   const { isSuccess } = mutation;
@@ -200,15 +201,14 @@ export default function ArticlesCreatePage({ storybook = false }) {
   };
 &nbsp;
   if (isSuccess &amp;&amp; !storybook) {
-    return &lt;Navigate to="/articles" /&gt;;
+    return &lt;Navigate to="/UCSBOrganization" /&gt;;
   }
 &nbsp;
   return (
     &lt;BasicLayout&gt;
       &lt;div className="pt-2"&gt;
-        &lt;h1&gt;Create New Article&lt;/h1&gt;
-&nbsp;
-        &lt;ArticlesForm submitAction={onSubmit} /&gt;
+        &lt;h1&gt;Create New UCSBOrganization&lt;/h1&gt;
+        &lt;UCSBOrganizationForm submitAction={onSubmit} /&gt;
       &lt;/div&gt;
     &lt;/BasicLayout&gt;
   );
