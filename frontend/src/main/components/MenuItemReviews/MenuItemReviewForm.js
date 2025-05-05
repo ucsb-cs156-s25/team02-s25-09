@@ -24,7 +24,6 @@ function MenuItemReviewForm({
     /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
   // Stryker restore Regex
 
-
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
       {initialContents && (
@@ -93,25 +92,26 @@ function MenuItemReviewForm({
         </Form.Control.Feedback>
       </Form.Group>
 
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="dateReviewed">
+          Date Reviewed(iso format)
+        </Form.Label>
+        <Form.Control
+          data-testid={testIdPrefix + "-dateReviewed"}
+          id="dateReviewed"
+          type="datetime-local"
+          isInvalid={Boolean(errors.dateReviewed)}
+          {...register("dateReviewed", {
+            required: true,
+            pattern: isodate_regex,
+          })}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.dateReviewed && "Date Reviewed is required. "}
+        </Form.Control.Feedback>
+      </Form.Group>
 
       <Form.Group className="mb-3">
-            <Form.Label htmlFor="dateReviewed">Date Reviewed(iso format)</Form.Label>
-            <Form.Control
-              data-testid={testIdPrefix + "-dateReviewed"}
-              id="dateReviewed"
-              type="datetime-local"
-              isInvalid={Boolean(errors.dateReviewed)}
-              {...register("dateReviewed", {
-                required: true,
-                pattern: isodate_regex,
-              })}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.dateReviewed && "Date Reviewed is required. "}
-            </Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group className="mb-3">
         <Form.Label htmlFor="comments">Comments</Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-comments"}
