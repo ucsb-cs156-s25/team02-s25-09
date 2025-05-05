@@ -14,6 +14,7 @@ function RecommendationRequestForm({
 }) {
 
   const defaultValues = initialContents ? {
+    ...initialContents,
     dateRequested: removeZ(initialContents.dateRequested),
     dateNeeded:    removeZ(initialContents.dateNeeded)
   } : {};
