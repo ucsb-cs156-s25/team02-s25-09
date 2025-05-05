@@ -130,6 +130,7 @@ describe("RecommendationRequestForm tests", () => {
     });
   });
 
+  
   test("maxLength validation works for email fields", async () => {
     render(
       <QueryClientProvider client={queryClient}>
