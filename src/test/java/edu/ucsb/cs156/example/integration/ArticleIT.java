@@ -23,7 +23,7 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @Import(TestConfig.class)
-public class ArticleWebIT {
+public class ArticleIT {
 
     @Autowired
     private MockMvc mockMvc;
