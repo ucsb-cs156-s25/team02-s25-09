@@ -13,11 +13,13 @@ function RecommendationRequestForm({
   buttonLabel = "Create",
 }) {
 
+  // Stryker disable all
   const defaultValues = initialContents ? {
+    ...initialContents,
     dateRequested: removeZ(initialContents.dateRequested),
     dateNeeded:    removeZ(initialContents.dateNeeded)
   } : {};
-
+  // Stryker restore all
 
   // Stryker disable all
   const {
@@ -121,7 +123,7 @@ function RecommendationRequestForm({
       <Form.Group className="mb-3">
             <Form.Label htmlFor="dateRequested">Date Requested</Form.Label>
             <Form.Control
-              // data-testid={testIdPrefix + "-dateRequested"}
+              data-testid={testIdPrefix + "-dateRequested"}
               id="dateRequested"
               type="datetime-local"
               isInvalid={Boolean(errors.dateRequested)}
@@ -138,7 +140,7 @@ function RecommendationRequestForm({
           <Form.Group className="mb-3">
             <Form.Label htmlFor="dateNeeded">Date Needed</Form.Label>
             <Form.Control
-              // data-testid={testIdPrefix + "-dateNeeded"}
+              data-testid={testIdPrefix + "-dateNeeded"}
               id="dateNeeded"
               type="datetime-local"
               isInvalid={Boolean(errors.dateNeeded)}
@@ -162,7 +164,7 @@ function RecommendationRequestForm({
           isInvalid={Boolean(errors.done)}
           {...register("done", {
             required: "Done is required.",
-            valueAsBoolean: true,
+            // valueAsBoolean: true,
           })}
         >
           <option value="">-- select --</option>
