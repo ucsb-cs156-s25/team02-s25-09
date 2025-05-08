@@ -1,5 +1,5 @@
 import { Button, Form } from "react-bootstrap";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 function HelpRequestForm({
@@ -9,15 +9,21 @@ function HelpRequestForm({
 }) {
   // Stryker disable all
   const {
-    control,
     register,
     formState: { errors },
     handleSubmit,
   } = useForm({ defaultValues: initialContents || {} });
   // Stryker restore all
 
-  const navigate = useNavigate();
+  // For explanation, see: https://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime
+  // Note that even this complex regex may still need some tweaks
 
+  // Stryker disable Regex
+  const isodate_regex =
+    /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
+  // Stryker restore Regex
+
+  const navigate = useNavigate();
   const testIdPrefix = "HelpRequestForm";
 
   return (
@@ -93,21 +99,18 @@ function HelpRequestForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="requestTime">Request Time (iso format)</Form.Label>
         <Form.Control
-          type="datetime-local"
+          data-testid="HelpRequestForm-requestTime"
           id="requestTime"
-          data-testid={`${testIdPrefix}-requestTime`}
+          type="datetime-local"
           step="1"
-          defaultValue={initialContents?.requestTime}
-          isInvalid={!!errors.requestTime}
+          isInvalid={Boolean(errors.requestTime)}
           {...register("requestTime", {
-            required: "Request Time is required.",
-            validate: (value) =>
-              /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/.test(value) ||
-              "Please use correct form in the timestamp",
+            required: true,
+            pattern: isodate_regex,
           })}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.requestTime?.message}
+          {errors.requestTime && "Request Time is required. "}
         </Form.Control.Feedback>
       </Form.Group>
 
@@ -127,44 +130,15 @@ function HelpRequestForm({
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Controller
-        name="solved"
-        control={control}
-        rules={{
-          validate: (value) =>
-            value === true ||
-            value === false ||
-            "You must indicate whether this is solved.",
-        }}
-        render={({ field }) => (
-          <Form.Group className="mb-3">
-            <Form.Label>Solved</Form.Label>
-            <div>
-              <Form.Check
-                inline
-                type="radio"
-                id="solved-yes"
-                label="Yes"
-                checked={field.value === true}
-                onChange={() => field.onChange(true)}
-                isInvalid={!!errors.solved}
-              />
-              <Form.Check
-                inline
-                type="radio"
-                id="solved-no"
-                label="No"
-                checked={field.value === false}
-                onChange={() => field.onChange(false)}
-                isInvalid={!!errors.solved}
-              />
-            </div>
-            <Form.Control.Feedback type="invalid" style={{ display: "block" }}>
-              {errors.solved?.message}
-            </Form.Control.Feedback>
-          </Form.Group>
-        )}
-      />
+      <Form.Group className="mb-3">
+        <Form.Check
+          data-testid={testIdPrefix + "-solved"}
+          id="solved"
+          type="checkbox"
+          label="Solved"
+          {...register("solved")}
+        />
+      </Form.Group>
 
       <Button type="submit" data-testid={testIdPrefix + "-submit"}>
         {buttonLabel}

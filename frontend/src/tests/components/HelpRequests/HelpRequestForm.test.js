@@ -36,6 +36,18 @@ describe("HelpRequestForm tests", () => {
     );
 
     expect(await screen.findByText(/Create/)).toBeInTheDocument();
+    expect(screen.getByTestId(`${testId}-requesterEmail`)).toBeInTheDocument();
+    expect(screen.getByTestId(`${testId}-teamId`)).toBeInTheDocument();
+    expect(
+      screen.getByTestId(`${testId}-tableOrBreakoutRoom`),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByTestId(`HelpRequestForm-requestTime`),
+    ).toBeInTheDocument();
+    expect(screen.getByTestId(`${testId}-explanation`)).toBeInTheDocument();
+    expect(screen.getByTestId(`${testId}-solved`)).toBeInTheDocument();
+    expect(screen.getByTestId(`${testId}-submit`)).toBeInTheDocument();
 
     expectedHeaders.forEach((headerText) => {
       const header = screen.getByText(headerText);
@@ -99,9 +111,6 @@ describe("HelpRequestForm tests", () => {
     ).toBeInTheDocument();
     expect(screen.getByText(/Request Time is required/)).toBeInTheDocument();
     expect(screen.getByText(/Explanation is required/)).toBeInTheDocument();
-    expect(
-      screen.getByText(/You must indicate whether this is solved/),
-    ).toBeInTheDocument();
 
     const requesterEmailInput = screen.getByTestId(`${testId}-requesterEmail`);
     fireEvent.change(requesterEmailInput, {
