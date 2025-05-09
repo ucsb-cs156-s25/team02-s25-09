@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
 export default function RecommendationRequestTable({
-  recommendationrequests, // TODO: Need more(?)
+  recommendationrequests,
   currentUser,
   testIdPrefix = "RecommendationRequestTable",
 }) {
@@ -61,9 +61,9 @@ export default function RecommendationRequestTable({
       accessor: "dateNeeded",
     },
     {
-     Header: "Done",
-     accessor: "done",
-    }
+      Header: "Done",
+      accessor: "done",
+    },
   ];
 
   if (hasRole(currentUser, "ROLE_ADMIN")) {
@@ -74,6 +74,10 @@ export default function RecommendationRequestTable({
   }
 
   return (
-    <OurTable data={recommendationrequests} columns={columns} testid={testIdPrefix} />
+    <OurTable
+      data={recommendationrequests}
+      columns={columns}
+      testid={testIdPrefix}
+    />
   );
 }
