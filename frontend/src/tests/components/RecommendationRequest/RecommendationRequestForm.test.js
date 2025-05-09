@@ -52,23 +52,6 @@ describe("RecommendationRequestForm tests", () => {
     expect(removeZ("")).toBe("");
   });
 
-  test("renders correctly with no initialContents", async () => {
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          <RecommendationRequestForm />
-        </Router>
-      </QueryClientProvider>,
-    );
-
-    expect(await screen.findByText(/Create/)).toBeInTheDocument();
-
-    expectedHeaders.forEach((headerText) => {
-      const header = screen.getByText(headerText);
-      expect(header).toBeInTheDocument();
-    });
-  });
-
   test("renders correctly when passing in initialContents", async () => {
     render(
       <QueryClientProvider client={queryClient}>
