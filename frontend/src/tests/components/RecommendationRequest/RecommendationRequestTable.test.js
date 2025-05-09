@@ -6,7 +6,6 @@ import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
-import RecommendationRequestForm from "main/components/RecommendationRequests/RecommendationRequestForm";
 
 const mockedNavigate = jest.fn();
 
@@ -18,8 +17,24 @@ jest.mock("react-router-dom", () => ({
 describe("RecommendationRequestTable tests", () => {
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["id", "Requester's Email", "Professor's Email", "Explanation", "Date Requested", "Date Needed", "Done"];
-  const expectedFields = ["id", "requesterEmail", "professorEmail", "explanation", "dateRequested", "dateNeeded", "done"];
+  const expectedHeaders = [
+    "id",
+    "Requester's Email",
+    "Professor's Email",
+    "Explanation",
+    "Date Requested",
+    "Date Needed",
+    "Done",
+  ];
+  const expectedFields = [
+    "id",
+    "requesterEmail",
+    "professorEmail",
+    "explanation",
+    "dateRequested",
+    "dateNeeded",
+    "done",
+  ];
   const testId = "RecommendationRequestTable";
 
   test("renders empty table correctly", () => {
@@ -30,7 +45,10 @@ describe("RecommendationRequestTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RecommendationRequestTable recommendationrequests={[]} currentUser={currentUser} />
+          <RecommendationRequestTable
+            recommendationrequests={[]}
+            currentUser={currentUser}
+          />
         </MemoryRouter>
       </QueryClientProvider>,
     );
@@ -40,7 +58,7 @@ describe("RecommendationRequestTable tests", () => {
       const header = screen.getByText(headerText);
       expect(header).toBeInTheDocument();
     });
- 
+
     expectedFields.forEach((field) => {
       const fieldElement = screen.queryByTestId(
         `${testId}-cell-row-0-col-${field}`,
@@ -58,7 +76,9 @@ describe("RecommendationRequestTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <RecommendationRequestTable
-            recommendationrequests={RecommendationRequestFixtures.threeRecommendationRequests}
+            recommendationrequests={
+              RecommendationRequestFixtures.threeRecommendationRequests
+            }
             currentUser={currentUser}
           />
         </MemoryRouter>
@@ -82,7 +102,6 @@ describe("RecommendationRequestTable tests", () => {
     expect(
       screen.getByTestId(`${testId}-cell-row-0-col-requesterEmail`),
     ).toHaveTextContent("ldelplaya@ucsb.edu");
-
 
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(
       "3",
@@ -113,7 +132,9 @@ describe("RecommendationRequestTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <RecommendationRequestTable
-            recommendationrequests={RecommendationRequestFixtures.threeRecommendationRequests}
+            recommendationrequests={
+              RecommendationRequestFixtures.threeRecommendationRequests
+            }
             currentUser={currentUser}
           />
         </MemoryRouter>
@@ -132,19 +153,18 @@ describe("RecommendationRequestTable tests", () => {
     });
 
     expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent(
-        "2",
-      );
-      expect(
-        screen.getByTestId(`${testId}-cell-row-0-col-requesterEmail`),
-      ).toHaveTextContent("ldelplaya@ucsb.edu");
-  
-  
-      expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(
-        "3",
-      );
-      expect(
-        screen.getByTestId(`${testId}-cell-row-1-col-professorEmail`),
-      ).toHaveTextContent("kingbob321@ucsb.edu");
+      "2",
+    );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-requesterEmail`),
+    ).toHaveTextContent("ldelplaya@ucsb.edu");
+
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(
+      "3",
+    );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-professorEmail`),
+    ).toHaveTextContent("kingbob321@ucsb.edu");
 
     expect(screen.queryByText("Delete")).not.toBeInTheDocument();
     expect(screen.queryByText("Edit")).not.toBeInTheDocument();
@@ -159,7 +179,9 @@ describe("RecommendationRequestTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <RecommendationRequestTable
-            recommendationrequests={RecommendationRequestFixtures.threeRecommendationRequests}  // <— fix here
+            recommendationrequests={
+              RecommendationRequestFixtures.threeRecommendationRequests
+            } // <— fix here
             currentUser={currentUser}
           />
         </MemoryRouter>
@@ -171,7 +193,6 @@ describe("RecommendationRequestTable tests", () => {
       await screen.findByTestId(`${testId}-cell-row-0-col-id`),
     ).toHaveTextContent("2");
 
-
     const editButton = screen.getByTestId(
       `${testId}-cell-row-0-col-Edit-button`,
     );
@@ -182,7 +203,9 @@ describe("RecommendationRequestTable tests", () => {
 
     // assert - check that the navigate function was called with the expected path
     await waitFor(() =>
-      expect(mockedNavigate).toHaveBeenCalledWith("/recommendationrequests/edit/2"),
+      expect(mockedNavigate).toHaveBeenCalledWith(
+        "/recommendationrequests/edit/2",
+      ),
     );
   });
 
@@ -200,7 +223,9 @@ describe("RecommendationRequestTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <RecommendationRequestTable
-            recommendationrequests={RecommendationRequestFixtures.threeRecommendationRequests}
+            recommendationrequests={
+              RecommendationRequestFixtures.threeRecommendationRequests
+            }
             currentUser={currentUser}
           />
         </MemoryRouter>
@@ -225,4 +250,4 @@ describe("RecommendationRequestTable tests", () => {
     await waitFor(() => expect(axiosMock.history.delete.length).toBe(1));
     expect(axiosMock.history.delete[0].params).toEqual({ id: 2 });
   });
- });
+});

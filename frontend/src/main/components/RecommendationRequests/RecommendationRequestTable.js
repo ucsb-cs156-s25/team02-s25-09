@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
 export default function RecommendationRequestTable({
-  recommendationrequests, 
+  recommendationrequests,
   currentUser,
   testIdPrefix = "RecommendationRequestTable",
 }) {
@@ -19,7 +19,7 @@ export default function RecommendationRequestTable({
   const editCallback = (cell) => {
     navigate(`/recommendationrequests/edit/${cell.row.values.id}`);
   };
-  
+
   // Stryker disable all : hard to test for query caching
 
   const deleteMutation = useBackendMutation(
@@ -61,9 +61,9 @@ export default function RecommendationRequestTable({
       accessor: "dateNeeded",
     },
     {
-     Header: "Done",
-     accessor: "done",
-    }
+      Header: "Done",
+      accessor: "done",
+    },
   ];
 
   if (hasRole(currentUser, "ROLE_ADMIN")) {
@@ -74,6 +74,10 @@ export default function RecommendationRequestTable({
   }
 
   return (
-    <OurTable data={recommendationrequests} columns={columns} testid={testIdPrefix} />
+    <OurTable
+      data={recommendationrequests}
+      columns={columns}
+      testid={testIdPrefix}
+    />
   );
 }

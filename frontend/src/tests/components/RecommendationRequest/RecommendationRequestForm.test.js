@@ -1,7 +1,9 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
-import RecommendationRequestForm, {removeZ} from "main/components/RecommendationRequests/RecommendationRequestForm";
+import RecommendationRequestForm, {
+  removeZ,
+} from "main/components/RecommendationRequests/RecommendationRequestForm";
 import { RecommendationRequestFixtures } from "fixtures/RecommendationRequestFixtures";
 
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -14,36 +16,17 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe("RecommendationRequestForm tests", () => {
-
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["Requester's Email", "Professor's Email", "Explanation", "Date Requested", "Date Needed", "Done"];
+  const expectedHeaders = [
+    "Requester's Email",
+    "Professor's Email",
+    "Explanation",
+    "Date Requested",
+    "Date Needed",
+    "Done",
+  ];
   const testId = "RecommendationRequestForm";
-
-  test("renders correctly with no initialContents", async () => {
-    render(
-        <QueryClientProvider client={queryClient}>
-            <Router>
-                <RecommendationRequestForm />
-            </Router>
-        </QueryClientProvider>,
-    );
-
-    expect(await screen.findByText(/Create/)).toBeInTheDocument();
-
-    expectedHeaders.forEach((headerText) => {
-      const header = screen.getByText(headerText);
-      expect(header).toBeInTheDocument();
-    });
-  });
-
-  test("that the removeZ function works properly", () => {
-    expect(removeZ("ABC")).toBe("ABC");
-    expect(removeZ("ABCZ")).toBe("ABC");
-    expect(removeZ("ABCZ123")).toBe("ABC123");
-    expect(removeZ("")).toBe("");
-
-  });
 
   test("renders correctly with no initialContents", async () => {
     render(
@@ -62,11 +45,22 @@ describe("RecommendationRequestForm tests", () => {
     });
   });
 
+  test("that the removeZ function works properly", () => {
+    expect(removeZ("ABC")).toBe("ABC");
+    expect(removeZ("ABCZ")).toBe("ABC");
+    expect(removeZ("ABCZ123")).toBe("ABC123");
+    expect(removeZ("")).toBe("");
+  });
+
   test("renders correctly when passing in initialContents", async () => {
     render(
       <QueryClientProvider client={queryClient}>
         <Router>
-          <RecommendationRequestForm initialContents={RecommendationRequestFixtures.oneRecommendationRequest} />
+          <RecommendationRequestForm
+            initialContents={
+              RecommendationRequestFixtures.oneRecommendationRequest
+            }
+          />
         </Router>
       </QueryClientProvider>,
     );
@@ -81,7 +75,9 @@ describe("RecommendationRequestForm tests", () => {
     expect(await screen.findByTestId(`${testId}-id`)).toBeInTheDocument();
     expect(screen.getByText(`Id`)).toBeInTheDocument();
 
-    expect(screen.getByLabelText("Id")).toHaveValue(String(RecommendationRequestFixtures.oneRecommendationRequest.id));
+    expect(screen.getByLabelText("Id")).toHaveValue(
+      String(RecommendationRequestFixtures.oneRecommendationRequest.id),
+    );
     expect(await screen.findByText(/Requester's Email/)).toBeInTheDocument();
     expect(await screen.findByText(/Professor's Email/)).toBeInTheDocument();
     expect(await screen.findByText(/Date Requested/)).toBeInTheDocument();
@@ -94,8 +90,6 @@ describe("RecommendationRequestForm tests", () => {
     //expect(screen.getByLabelText("professorEmail")).toHaveValue(RecommendationRequestFixtures.oneRecommendationRequest.professorEmail);
     //expect(screen.getByLabelText("explanation")).toHaveValue(RecommendationRequestFixtures.oneRecommendationRequest.explanation);
     //expect(screen.getByLabelText("done")).toHaveValue(RecommendationRequestFixtures.oneRecommendationRequest.done);
-
-
   });
 
   test("that navigate(-1) is called when Cancel is clicked", async () => {
@@ -128,7 +122,9 @@ describe("RecommendationRequestForm tests", () => {
     fireEvent.click(submitButton);
 
     await screen.findByText(/Requester's email is required./);
-    expect(screen.getByText(/Professor's email is required./)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Professor's email is required./),
+    ).toBeInTheDocument();
     expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
     expect(screen.getByText(/Date requested is required./)).toBeInTheDocument();
     expect(screen.getByText(/Date needed is required./)).toBeInTheDocument();
@@ -142,28 +138,20 @@ describe("RecommendationRequestForm tests", () => {
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-      expect(screen.getByText(/Max length 1000 characters/)).toBeInTheDocument();
+      expect(
+        screen.getByText(/Max length 1000 characters/),
+      ).toBeInTheDocument();
     });
   });
 
-  
   test("maxLength validation works for email field 1", async () => {
     render(
       <QueryClientProvider client={queryClient}>
         <Router>
           <RecommendationRequestForm />
         </Router>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
-
-
-
-
-
-
-
-
-
 
     // Find form fields
     const requesterEmailInput = screen.getByLabelText(/Requester's Email/i);
@@ -172,23 +160,23 @@ describe("RecommendationRequestForm tests", () => {
 
     // Enter value that exceeds max length
     const tooLongEmail = "a".repeat(256) + "@example.com";
-    
+
     // Test requesterEmail validation
     fireEvent.change(requesterEmailInput, { target: { value: tooLongEmail } });
     fireEvent.click(submitButton);
 
-
-    
     // We should see the max length error message
     await waitFor(() => {
       expect(screen.getByText("Max length 255 characters")).toBeInTheDocument();
     });
 
     // Clear and try with professorEmail
-    fireEvent.change(requesterEmailInput, { target: { value: "valid@example.com" } });
+    fireEvent.change(requesterEmailInput, {
+      target: { value: "valid@example.com" },
+    });
     fireEvent.change(professorEmailInput, { target: { value: tooLongEmail } });
     fireEvent.click(submitButton);
-    
+
     await waitFor(() => {
       expect(screen.getByText("Max length 255 characters")).toBeInTheDocument();
     });
@@ -200,7 +188,7 @@ describe("RecommendationRequestForm tests", () => {
         <Router>
           <RecommendationRequestForm />
         </Router>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
     // Find form fields
@@ -210,27 +198,25 @@ describe("RecommendationRequestForm tests", () => {
 
     // Enter value that exceeds max length
     const tooLongEmail = "a".repeat(256) + "@example.com";
-    
+
     // Test requesterEmail validation
     fireEvent.change(professorEmailInput, { target: { value: tooLongEmail } });
     fireEvent.click(submitButton);
 
-
-    
     // We should see the max length error message
     await waitFor(() => {
       expect(screen.getByText("Max length 255 characters")).toBeInTheDocument();
     });
 
     // Clear and try with professorEmail
-    fireEvent.change(professorEmailInput, { target: { value: "valid@example.com" } });
+    fireEvent.change(professorEmailInput, {
+      target: { value: "valid@example.com" },
+    });
     fireEvent.change(requesterEmailInput, { target: { value: tooLongEmail } });
     fireEvent.click(submitButton);
-    
+
     await waitFor(() => {
       expect(screen.getByText("Max length 255 characters")).toBeInTheDocument();
     });
   });
-
-
 });
