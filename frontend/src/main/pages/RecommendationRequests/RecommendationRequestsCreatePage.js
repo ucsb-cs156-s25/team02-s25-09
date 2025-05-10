@@ -4,26 +4,27 @@ import { Navigate } from "react-router-dom";
 import { useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 
-export default function RecommendationRequestsCreatePage({ storybook = false }) {
-
+export default function RecommendationRequestsCreatePage({
+  storybook = false,
+}) {
   //const addZ = (string) => `${string}Z`;
 
   const objectToAxiosParams = (recommendationrequest) => ({
     url: "/api/recommendationrequests/post",
     method: "POST",
     params: {
-      requesterEmail:      recommendationrequest.requesterEmail,
-      professorEmail:      recommendationrequest.professorEmail,
-      explanation:         recommendationrequest.explanation,
-      dateRequested:       recommendationrequest.dateRequested,
-      dateNeeded:          recommendationrequest.dateNeeded,
-      done:                recommendationrequest.done,
+      requesterEmail: recommendationrequest.requesterEmail,
+      professorEmail: recommendationrequest.professorEmail,
+      explanation: recommendationrequest.explanation,
+      dateRequested: recommendationrequest.dateRequested,
+      dateNeeded: recommendationrequest.dateNeeded,
+      done: recommendationrequest.done,
     },
   });
 
   const onSuccess = (recommendationrequest) => {
     toast(
-      `New recommendation request Created - id: ${recommendationrequest.id} name: ${recommendationrequest.requesterEmail}`,
+      `New recommendation request Created - id: ${recommendationrequest.id} requesterEmail: ${recommendationrequest.requesterEmail}`,
     );
   };
 
