@@ -1,0 +1,1055 @@
+19:42:20 (93362) DEBUG ConfigReader Loading config from stryker.config.json
+19:42:20 (93362) DEBUG ConfigReader Loaded config: {
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "_comment": "This config was generated using 'stryker init'. Please see the guide for more information: https://stryker-mutator.io/docs/stryker-js/guides/react",
+  "testRunner": "jest",
+  "reporters": [
+    "progress",
+    "clear-text",
+    "html"
+  ],
+  "coverageAnalysis": "off",
+  "jest": {
+    "projectType": "create-react-app"
+  },
+  "mutate": [
+    "src/main/**/*.js",
+    "src/main/**/*.jsx"
+  ],
+  "thresholds": {
+    "high": 100,
+    "low": 90,
+    "break": 100
+  },
+  "fileLogLevel": "trace",
+  "logLevel": "debug",
+  "allowConsoleColors": true,
+  "checkers": [],
+  "checkerNodeArgs": [],
+  "commandRunner": {
+    "command": "npm test"
+  },
+  "clearTextReporter": {
+    "allowColor": true,
+    "allowEmojis": false,
+    "logTests": true,
+    "maxTestsToLog": 3,
+    "reportTests": true,
+    "reportMutants": true,
+    "reportScoreTable": true,
+    "skipFull": false
+  },
+  "dashboard": {
+    "baseUrl": "https://dashboard.stryker-mutator.io/api/reports",
+    "reportType": "full"
+  },
+  "dryRunOnly": false,
+  "eventReporter": {
+    "baseDir": "reports/mutation/events"
+  },
+  "ignorePatterns": [],
+  "ignoreStatic": false,
+  "incremental": false,
+  "incrementalFile": "reports/stryker-incremental.json",
+  "force": false,
+  "inPlace": false,
+  "maxConcurrentTestRunners": 9007199254740991,
+  "maxTestRunnerReuse": 0,
+  "mutator": {
+    "plugins": null,
+    "excludedMutations": []
+  },
+  "plugins": [
+    "@stryker-mutator/*"
+  ],
+  "appendPlugins": [],
+  "htmlReporter": {
+    "fileName": "reports/mutation/mutation.html"
+  },
+  "jsonReporter": {
+    "fileName": "reports/mutation/mutation.json"
+  },
+  "disableTypeChecks": true,
+  "symlinkNodeModules": true,
+  "tempDirName": ".stryker-tmp",
+  "cleanTempDir": true,
+  "testRunnerNodeArgs": [],
+  "timeoutFactor": 1.5,
+  "timeoutMS": 5000,
+  "dryRunTimeoutMinutes": 5,
+  "tsconfigFile": "tsconfig.json",
+  "warnings": true,
+  "disableBail": false,
+  "allowEmpty": false,
+  "ignorers": []
+}
+19:42:20 (93362) DEBUG PluginLoader Loading @stryker-mutator/* from /Users/andrew/cs156/team02-s25-09/frontend/node_modules/@stryker-mutator
+19:42:20 (93362) DEBUG PluginLoader Loading plugin "@stryker-mutator/jest-runner" (matched with expression @stryker-mutator/*)
+19:42:20 (93362) DEBUG PluginLoader Loading plugin @stryker-mutator/jest-runner
+19:42:20 (93362) DEBUG PluginLoader Loading plugin file:///Users/andrew/cs156/team02-s25-09/frontend/node_modules/@stryker-mutator/core/dist/src/reporters/index.js
+19:42:20 (93362) DEBUG MetaSchemaBuilder Contributing 1 schemas from plugins to options validation.
+19:42:20 (93362) WARN ProjectReader Glob pattern "src/main/**/*.jsx" did not result in any files.
+19:42:20 (93362) INFO ProjectReader Found 34 of 175 file(s) to be mutated.
+19:42:20 (93362) DEBUG ProjectReader All input files: [
+  "/Users/andrew/cs156/team02-s25-09/frontend/.gitignore",
+  "/Users/andrew/cs156/team02-s25-09/frontend/.storybook/main.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/.storybook/preview.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/README.md",
+  "/Users/andrew/cs156/team02-s25-09/frontend/build-storybook.log",
+  "/Users/andrew/cs156/team02-s25-09/frontend/chromatic.config.json",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/clover.xml",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/coverage-final.json",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/base.css",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/block-navigation.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/Nav/AppNavbar.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/Nav/AppNavbarLocalhost.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/Nav/Footer.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/Nav/index.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/OurTable.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/Profile/RoleBadge.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/Profile/index.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/RecommendationRequests/RecommendationRequestForm.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/RecommendationRequests/RecommendationRequestTable.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/RecommendationRequests/index.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/Restaurants/RestaurantForm.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/Restaurants/RestaurantTable.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/Restaurants/index.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/UCSBDates/UCSBDateForm.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/UCSBDates/UCSBDatesTable.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/UCSBDates/index.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/Users/UsersTable.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/Users/index.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/components/index.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/favicon.png",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/index.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/layouts/BasicLayout/BasicLayout.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/layouts/BasicLayout/index.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/AdminUsersPage.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/HomePage.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/Placeholder/PlaceholderCreatePage.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/Placeholder/PlaceholderEditPage.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/Placeholder/PlaceholderIndexPage.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/Placeholder/index.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/ProfilePage.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/RecommendationRequests/RecommendationRequestsCreatePage.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/RecommendationRequests/RecommendationRequestsEditPage.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/RecommendationRequests/RecommendationRequestsIndexPage.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/RecommendationRequests/index.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/Restaurants/RestaurantCreatePage.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/Restaurants/RestaurantEditPage.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/Restaurants/RestaurantIndexPage.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/Restaurants/index.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/UCSBDates/UCSBDatesCreatePage.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/UCSBDates/UCSBDatesEditPage.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/UCSBDates/UCSBDatesIndexPage.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/UCSBDates/index.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/pages/index.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/prettify.css",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/prettify.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/sort-arrow-sprite.png",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/sorter.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/utils/RecommendationRequestUtils.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/utils/UCSBDateUtils.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/utils/currentUser.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/utils/index.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/utils/restaurantUtils.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/utils/systemInfo.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov-report/utils/useBackend.js.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/coverage/lcov.info",
+  "/Users/andrew/cs156/team02-s25-09/frontend/docs-index/_branches/.keep",
+  "/Users/andrew/cs156/team02-s25-09/frontend/docs-index/_config.yml",
+  "/Users/andrew/cs156/team02-s25-09/frontend/docs-index/_layouts/default.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/docs-index/index.md",
+  "/Users/andrew/cs156/team02-s25-09/frontend/jsconfig.json",
+  "/Users/andrew/cs156/team02-s25-09/frontend/package-lock.json",
+  "/Users/andrew/cs156/team02-s25-09/frontend/package.json",
+  "/Users/andrew/cs156/team02-s25-09/frontend/public/favicon.ico",
+  "/Users/andrew/cs156/team02-s25-09/frontend/public/index.html",
+  "/Users/andrew/cs156/team02-s25-09/frontend/public/logo192.png",
+  "/Users/andrew/cs156/team02-s25-09/frontend/public/logo512.png",
+  "/Users/andrew/cs156/team02-s25-09/frontend/public/manifest.json",
+  "/Users/andrew/cs156/team02-s25-09/frontend/public/mockServiceWorker.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/public/robots.txt",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/App.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/fixtures/RecommendationRequestFixtures.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/fixtures/currentUserFixtures.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/fixtures/restaurantFixtures.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/fixtures/studentFixtures.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/fixtures/systemInfoFixtures.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/fixtures/temp.json",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/fixtures/ucsbDatesFixtures.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/fixtures/usersFixtures.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/index.css",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/index.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/Nav/AppNavbar.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/Nav/AppNavbarLocalhost.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/Nav/Footer.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/OurTable.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/Profile/RoleBadge.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/RecommendationRequests/RecommendationRequestForm.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/RecommendationRequests/RecommendationRequestTable.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/Restaurants/RestaurantForm.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/Restaurants/RestaurantTable.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/UCSBDates/UCSBDateForm.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/UCSBDates/UCSBDatesTable.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/Users/UsersTable.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/layouts/BasicLayout/BasicLayout.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/AdminUsersPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/HomePage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/Placeholder/PlaceholderCreatePage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/Placeholder/PlaceholderEditPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/Placeholder/PlaceholderIndexPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/ProfilePage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/RecommendationRequests/RecommendationRequestsCreatePage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/RecommendationRequests/RecommendationRequestsEditPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/RecommendationRequests/RecommendationRequestsIndexPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/Restaurants/RestaurantCreatePage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/Restaurants/RestaurantEditPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/Restaurants/RestaurantIndexPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/UCSBDates/UCSBDatesCreatePage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/UCSBDates/UCSBDatesEditPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/UCSBDates/UCSBDatesIndexPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/utils/RecommendationRequestUtils.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/utils/UCSBDateUtils.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/utils/currentUser.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/utils/restaurantUtils.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/utils/systemInfo.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/utils/useBackend.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/reportWebVitals.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/setupTests.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/stories/components/Nav/AppNavbar.stories.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/stories/components/OurTable.stories.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/stories/components/RecommendationRequest/RecommendationRequestForm.stories.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/stories/components/RecommendationRequest/RecommendationRequestTable.stories.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/stories/components/Restaurants/RestaurantForm.stories.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/stories/components/Restaurants/RestaurantTable.stories.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/stories/components/UCSBDates/UCSBDateForm.stories.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/stories/components/UCSBDates/UCSBDatesTable.stories.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/stories/pages/HomePage.stories.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/stories/pages/ProfilePage.stories.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/stories/pages/Restaurants/RestaurantCreatePage.stories.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/stories/pages/Restaurants/RestaurantEditPage.stories.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/stories/pages/Restaurants/RestaurantIndexPage.stories.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/stories/pages/UCSBDates/UCSBDatesCreatePage.stories.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/stories/pages/UCSBDates/UCSBDatesEditPage.stories.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/stories/pages/UCSBDates/UCSBDatesIndexPage.stories.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/components/Nav/AppNavbar.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/components/Nav/AppNavbarLocalhost.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/components/Nav/Footer.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/components/OurTable.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/components/Profile/RoleBadge.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/components/RecommendationRequest/RecommendationRequestForm.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/components/RecommendationRequest/RecommendationRequestTable.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/components/Restaurants/RestaurantForm.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/components/Restaurants/RestaurantTable.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/components/UCSBDates/UCSBDateForm.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/components/UCSBDates/UCSBDatesTable.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/components/Users/UsersTable.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/pages/AdminUsersPage.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/pages/HomePage.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/pages/Placeholder/PlaceholderCreatePage.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/pages/Placeholder/PlaceholderEditPage.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/pages/Placeholder/PlaceholderIndexPage.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/pages/ProfilePage.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/pages/RecommendationRequests/RecommendationRequestsCreatePage.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/pages/RecommendationRequests/RecommendationRequestsEditPage.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/pages/RecommendationRequests/RecommendationRequestsIndexPage.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/pages/Restaurants/RestaurantCreatePage.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/pages/Restaurants/RestaurantEditPage.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/pages/Restaurants/RestaurantIndexPage.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/pages/UCSBDates/UCSBDatesCreatePage.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/pages/UCSBDates/UCSBDatesEditPage.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/pages/UCSBDates/UCSBDatesIndexPage.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/utils/UCSBDateUtils.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/utils/currentUser.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/utils/recommendationrequestUtils.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/utils/systemInfo.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/tests/utils/useBackend.test.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/stryker.config.json"
+]
+19:42:20 (93362) DEBUG ProjectReader Files to mutate: [
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/Nav/AppNavbar.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/Nav/AppNavbarLocalhost.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/Nav/Footer.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/OurTable.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/Profile/RoleBadge.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/RecommendationRequests/RecommendationRequestForm.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/RecommendationRequests/RecommendationRequestTable.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/Restaurants/RestaurantForm.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/Restaurants/RestaurantTable.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/UCSBDates/UCSBDateForm.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/UCSBDates/UCSBDatesTable.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/components/Users/UsersTable.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/layouts/BasicLayout/BasicLayout.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/AdminUsersPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/HomePage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/Placeholder/PlaceholderCreatePage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/Placeholder/PlaceholderEditPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/Placeholder/PlaceholderIndexPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/ProfilePage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/RecommendationRequests/RecommendationRequestsCreatePage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/RecommendationRequests/RecommendationRequestsEditPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/RecommendationRequests/RecommendationRequestsIndexPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/Restaurants/RestaurantCreatePage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/Restaurants/RestaurantEditPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/Restaurants/RestaurantIndexPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/UCSBDates/UCSBDatesCreatePage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/UCSBDates/UCSBDatesEditPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/pages/UCSBDates/UCSBDatesIndexPage.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/utils/RecommendationRequestUtils.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/utils/UCSBDateUtils.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/utils/currentUser.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/utils/restaurantUtils.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/utils/systemInfo.js",
+  "/Users/andrew/cs156/team02-s25-09/frontend/src/main/utils/useBackend.js"
+]
+19:42:20 (93362) DEBUG TemporaryDirectory Using temp directory "/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp"
+19:42:20 (93362) DEBUG Instrumenter Instrumenting 34 source files with mutants
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/components/Nav/AppNavbar.js (33 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/components/Nav/AppNavbarLocalhost.js (3 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/components/Nav/Footer.js (2 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/components/OurTable.js (24 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/components/Profile/RoleBadge.js (7 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/components/RecommendationRequests/RecommendationRequestForm.js (91 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/components/RecommendationRequests/RecommendationRequestTable.js (38 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/components/Restaurants/RestaurantForm.js (28 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/components/Restaurants/RestaurantTable.js (26 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/components/UCSBDates/UCSBDateForm.js (77 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/components/UCSBDates/UCSBDatesTable.js (31 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/components/Users/UsersTable.js (19 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/layouts/BasicLayout/BasicLayout.js (1 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/pages/AdminUsersPage.js (7 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/pages/HomePage.js (1 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/pages/Placeholder/PlaceholderCreatePage.js (1 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/pages/Placeholder/PlaceholderEditPage.js (1 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/pages/Placeholder/PlaceholderIndexPage.js (1 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/pages/ProfilePage.js (8 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/pages/RecommendationRequests/RecommendationRequestsCreatePage.js (1 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/pages/RecommendationRequests/RecommendationRequestsEditPage.js (1 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/pages/RecommendationRequests/RecommendationRequestsIndexPage.js (1 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/pages/Restaurants/RestaurantCreatePage.js (18 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/pages/Restaurants/RestaurantEditPage.js (29 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/pages/Restaurants/RestaurantIndexPage.js (14 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/pages/UCSBDates/UCSBDatesCreatePage.js (18 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/pages/UCSBDates/UCSBDatesEditPage.js (28 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/pages/UCSBDates/UCSBDatesIndexPage.js (14 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/utils/RecommendationRequestUtils.js (6 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/utils/UCSBDateUtils.js (6 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/utils/currentUser.js (39 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/utils/restaurantUtils.js (6 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/utils/systemInfo.js (12 mutant(s))
+19:42:20 (93362) DEBUG Instrumenter Instrumented src/main/utils/useBackend.js (22 mutant(s))
+19:42:20 (93362) INFO Instrumenter Instrumented 34 source file(s) with 614 mutant(s)
+19:42:20 (93362) INFO ConcurrencyTokenProvider Creating 7 test runner process(es).
+19:42:20 (93362) DEBUG ChildProcessProxy Started CheckerWorker in worker process 0 with pid 93365 
+19:42:20 (93365) DEBUG PluginLoader Loading plugin @stryker-mutator/jest-runner
+19:42:20 (93365) DEBUG PluginLoader Loading plugin file:///Users/andrew/cs156/team02-s25-09/frontend/node_modules/@stryker-mutator/core/dist/src/reporters/index.js
+19:42:20 (93362) DEBUG Sandbox Creating a sandbox for files in /Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619
+19:42:20 (93362) DEBUG Sandbox Start symlink node_modules
+19:42:20 (93362) DEBUG Sandbox Create symlink from /Users/andrew/cs156/team02-s25-09/frontend/node_modules to /Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/node_modules
+19:42:20 (93362) DEBUG BroadcastReporter Broadcasting to reporters ["progress","clear-text","html"]
+19:42:20 (93362) DEBUG ChildProcessProxy Started ChildProcessTestRunnerWorker in worker process 0 with pid 93366 
+19:42:20 (93362) DEBUG ChildProcessProxy Started ChildProcessTestRunnerWorker in worker process 1 with pid 93367 
+19:42:20 (93367) DEBUG PluginLoader Loading plugin @stryker-mutator/jest-runner
+19:42:20 (93367) DEBUG PluginLoader Loading plugin file:///Users/andrew/cs156/team02-s25-09/frontend/node_modules/@stryker-mutator/core/dist/src/reporters/index.js
+19:42:20 (93366) DEBUG PluginLoader Loading plugin @stryker-mutator/jest-runner
+19:42:20 (93366) DEBUG PluginLoader Loading plugin file:///Users/andrew/cs156/team02-s25-09/frontend/node_modules/@stryker-mutator/core/dist/src/reporters/index.js
+19:42:20 (93367) DEBUG ChildProcessProxyWorker Changing current working directory for this process to /Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619
+19:42:20 (93366) DEBUG ChildProcessProxyWorker Changing current working directory for this process to /Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619
+19:42:21 (93367) DEBUG jestTestAdapterFactory Detected Jest version 27.5.1
+19:42:21 (93366) DEBUG jestTestAdapterFactory Detected Jest version 27.5.1
+19:42:21 (93366) DEBUG JestTestRunner Running jest with --findRelatedTests flag. Set jest.enableFindRelatedTests to false to run all tests on every mutant.
+19:42:21 (93367) DEBUG JestTestRunner Running jest with --findRelatedTests flag. Set jest.enableFindRelatedTests to false to run all tests on every mutant.
+19:42:21 (93362) INFO DryRunExecutor Starting initial test run (jest test runner with "off" coverage analysis). This may take a while.
+19:42:21 (93362) DEBUG DryRunExecutor Using timeout of 300000 ms.
+19:42:21 (93362) DEBUG TimeoutDecorator Starting timeout timer (300000 ms) for a test run
+19:42:21 (93362) DEBUG ChildProcessProxy Started ChildProcessTestRunnerWorker in worker process 2 with pid 93368 
+19:42:21 (93362) DEBUG ChildProcessProxy Started ChildProcessTestRunnerWorker in worker process 3 with pid 93369 
+19:42:21 (93366) DEBUG JestTestRunner Merging file-based config {
+  "roots": [
+    "<rootDir>/src"
+  ],
+  "collectCoverageFrom": [
+    "src/main/**/*.{js,jsx,ts,tsx}"
+  ],
+  "setupFiles": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-app-polyfill/jsdom.js"
+  ],
+  "setupFilesAfterEnv": [
+    "<rootDir>/src/setupTests.js"
+  ],
+  "testMatch": [
+    "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+    "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+  ],
+  "testEnvironment": "jsdom",
+  "transform": {
+    "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/babelTransform.js",
+    "^.+\\.css$": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/cssTransform.js",
+    "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/fileTransform.js"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+    "^.+\\.module\\.(css|sass|scss)$"
+  ],
+  "modulePaths": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src"
+  ],
+  "moduleNameMapper": {
+    "^react-native$": "react-native-web",
+    "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+    "^axios$": "axios/dist/node/axios.cjs"
+  },
+  "moduleFileExtensions": [
+    "web.js",
+    "js",
+    "web.ts",
+    "ts",
+    "web.tsx",
+    "tsx",
+    "json",
+    "web.jsx",
+    "jsx",
+    "node"
+  ],
+  "watchPlugins": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-watch-typeahead/build/file_name_plugin/plugin.js",
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-watch-typeahead/build/test_name_plugin/plugin.js"
+  ],
+  "resetMocks": true,
+  "rootDir": "/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619"
+}
+      with custom config {}
+      and default (internal) stryker config {
+  "collectCoverage": false,
+  "verbose": false,
+  "notify": false,
+  "bail": false,
+  "reporters": []
+}
+19:42:21 (93366) TRACE JestTestRunner Invoking Jest with config {"fileNamesUnderTest":["/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/Nav/AppNavbar.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/Nav/AppNavbarLocalhost.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/Nav/Footer.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/OurTable.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/Profile/RoleBadge.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/RecommendationRequests/RecommendationRequestForm.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/RecommendationRequests/RecommendationRequestTable.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/Restaurants/RestaurantForm.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/Restaurants/RestaurantTable.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/UCSBDates/UCSBDateForm.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/UCSBDates/UCSBDatesTable.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/Users/UsersTable.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/layouts/BasicLayout/BasicLayout.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/AdminUsersPage.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/HomePage.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/Placeholder/PlaceholderCreatePage.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/Placeholder/PlaceholderEditPage.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/Placeholder/PlaceholderIndexPage.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/ProfilePage.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/RecommendationRequests/RecommendationRequestsCreatePage.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/RecommendationRequests/RecommendationRequestsEditPage.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/RecommendationRequests/RecommendationRequestsIndexPage.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/Restaurants/RestaurantCreatePage.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/Restaurants/RestaurantEditPage.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/Restaurants/RestaurantIndexPage.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/UCSBDates/UCSBDatesCreatePage.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/UCSBDates/UCSBDatesEditPage.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/UCSBDates/UCSBDatesIndexPage.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/utils/RecommendationRequestUtils.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/utils/UCSBDateUtils.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/utils/currentUser.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/utils/restaurantUtils.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/utils/systemInfo.js","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/utils/useBackend.js"],"jestConfig":{"roots":["<rootDir>/src","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/Nav","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/Profile","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/RecommendationRequests","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/Restaurants","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/UCSBDates","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/components/Users","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/layouts/BasicLayout","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/Placeholder","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/RecommendationRequests","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/Restaurants","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/pages/UCSBDates","/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/main/utils"],"collectCoverageFrom":["src/main/**/*.{js,jsx,ts,tsx}"],"setupFiles":["/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-app-polyfill/jsdom.js"],"setupFilesAfterEnv":["<rootDir>/src/setupTests.js"],"testMatch":["<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}","<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"],"testEnvironment":"jsdom","transform":{"^.+\\.(js|jsx|mjs|cjs|ts|tsx)$":"/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/babelTransform.js","^.+\\.css$":"/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/cssTransform.js","^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)":"/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/fileTransform.js"},"transformIgnorePatterns":["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$","^.+\\.module\\.(css|sass|scss)$"],"modulePaths":["/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src"],"moduleNameMapper":{"^react-native$":"react-native-web","^.+\\.module\\.(css|sass|scss)$":"identity-obj-proxy","^axios$":"axios/dist/node/axios.cjs"},"moduleFileExtensions":["web.js","js","web.ts","ts","web.tsx","tsx","json","web.jsx","jsx","node"],"watchPlugins":["/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-watch-typeahead/build/file_name_plugin/plugin.js","/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-watch-typeahead/build/test_name_plugin/plugin.js"],"resetMocks":true,"rootDir":"/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619","collectCoverage":false,"verbose":false,"notify":false,"bail":false,"reporters":[],"globals":{"__strykerGlobalNamespace__":"__stryker__"}},"testLocationInResults":true}
+19:42:21 (93367) DEBUG JestTestRunner Merging file-based config {
+  "roots": [
+    "<rootDir>/src"
+  ],
+  "collectCoverageFrom": [
+    "src/main/**/*.{js,jsx,ts,tsx}"
+  ],
+  "setupFiles": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-app-polyfill/jsdom.js"
+  ],
+  "setupFilesAfterEnv": [
+    "<rootDir>/src/setupTests.js"
+  ],
+  "testMatch": [
+    "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+    "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+  ],
+  "testEnvironment": "jsdom",
+  "transform": {
+    "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/babelTransform.js",
+    "^.+\\.css$": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/cssTransform.js",
+    "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/fileTransform.js"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+    "^.+\\.module\\.(css|sass|scss)$"
+  ],
+  "modulePaths": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src"
+  ],
+  "moduleNameMapper": {
+    "^react-native$": "react-native-web",
+    "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+    "^axios$": "axios/dist/node/axios.cjs"
+  },
+  "moduleFileExtensions": [
+    "web.js",
+    "js",
+    "web.ts",
+    "ts",
+    "web.tsx",
+    "tsx",
+    "json",
+    "web.jsx",
+    "jsx",
+    "node"
+  ],
+  "watchPlugins": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-watch-typeahead/build/file_name_plugin/plugin.js",
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-watch-typeahead/build/test_name_plugin/plugin.js"
+  ],
+  "resetMocks": true,
+  "rootDir": "/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619"
+}
+      with custom config {}
+      and default (internal) stryker config {
+  "collectCoverage": false,
+  "verbose": false,
+  "notify": false,
+  "bail": false,
+  "reporters": []
+}
+19:42:21 (93368) DEBUG PluginLoader Loading plugin @stryker-mutator/jest-runner
+19:42:21 (93368) DEBUG PluginLoader Loading plugin file:///Users/andrew/cs156/team02-s25-09/frontend/node_modules/@stryker-mutator/core/dist/src/reporters/index.js
+19:42:21 (93369) DEBUG PluginLoader Loading plugin @stryker-mutator/jest-runner
+19:42:21 (93369) DEBUG PluginLoader Loading plugin file:///Users/andrew/cs156/team02-s25-09/frontend/node_modules/@stryker-mutator/core/dist/src/reporters/index.js
+19:42:21 (93369) DEBUG ChildProcessProxyWorker Changing current working directory for this process to /Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619
+19:42:21 (93368) DEBUG ChildProcessProxyWorker Changing current working directory for this process to /Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619
+19:42:21 (93368) DEBUG jestTestAdapterFactory Detected Jest version 27.5.1
+19:42:21 (93369) DEBUG jestTestAdapterFactory Detected Jest version 27.5.1
+19:42:21 (93368) DEBUG JestTestRunner Running jest with --findRelatedTests flag. Set jest.enableFindRelatedTests to false to run all tests on every mutant.
+19:42:21 (93369) DEBUG JestTestRunner Running jest with --findRelatedTests flag. Set jest.enableFindRelatedTests to false to run all tests on every mutant.
+19:42:21 (93362) DEBUG ChildProcessProxy Started ChildProcessTestRunnerWorker in worker process 4 with pid 93413 
+19:42:21 (93368) DEBUG JestTestRunner Merging file-based config {
+  "roots": [
+    "<rootDir>/src"
+  ],
+  "collectCoverageFrom": [
+    "src/main/**/*.{js,jsx,ts,tsx}"
+  ],
+  "setupFiles": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-app-polyfill/jsdom.js"
+  ],
+  "setupFilesAfterEnv": [
+    "<rootDir>/src/setupTests.js"
+  ],
+  "testMatch": [
+    "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+    "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+  ],
+  "testEnvironment": "jsdom",
+  "transform": {
+    "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/babelTransform.js",
+    "^.+\\.css$": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/cssTransform.js",
+    "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/fileTransform.js"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+    "^.+\\.module\\.(css|sass|scss)$"
+  ],
+  "modulePaths": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src"
+  ],
+  "moduleNameMapper": {
+    "^react-native$": "react-native-web",
+    "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+    "^axios$": "axios/dist/node/axios.cjs"
+  },
+  "moduleFileExtensions": [
+    "web.js",
+    "js",
+    "web.ts",
+    "ts",
+    "web.tsx",
+    "tsx",
+    "json",
+    "web.jsx",
+    "jsx",
+    "node"
+  ],
+  "watchPlugins": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-watch-typeahead/build/file_name_plugin/plugin.js",
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-watch-typeahead/build/test_name_plugin/plugin.js"
+  ],
+  "resetMocks": true,
+  "rootDir": "/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619"
+}
+      with custom config {}
+      and default (internal) stryker config {
+  "collectCoverage": false,
+  "verbose": false,
+  "notify": false,
+  "bail": false,
+  "reporters": []
+}
+19:42:21 (93369) DEBUG JestTestRunner Merging file-based config {
+  "roots": [
+    "<rootDir>/src"
+  ],
+  "collectCoverageFrom": [
+    "src/main/**/*.{js,jsx,ts,tsx}"
+  ],
+  "setupFiles": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-app-polyfill/jsdom.js"
+  ],
+  "setupFilesAfterEnv": [
+    "<rootDir>/src/setupTests.js"
+  ],
+  "testMatch": [
+    "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+    "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+  ],
+  "testEnvironment": "jsdom",
+  "transform": {
+    "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/babelTransform.js",
+    "^.+\\.css$": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/cssTransform.js",
+    "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/fileTransform.js"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+    "^.+\\.module\\.(css|sass|scss)$"
+  ],
+  "modulePaths": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src"
+  ],
+  "moduleNameMapper": {
+    "^react-native$": "react-native-web",
+    "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+    "^axios$": "axios/dist/node/axios.cjs"
+  },
+  "moduleFileExtensions": [
+    "web.js",
+    "js",
+    "web.ts",
+    "ts",
+    "web.tsx",
+    "tsx",
+    "json",
+    "web.jsx",
+    "jsx",
+    "node"
+  ],
+  "watchPlugins": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-watch-typeahead/build/file_name_plugin/plugin.js",
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-watch-typeahead/build/test_name_plugin/plugin.js"
+  ],
+  "resetMocks": true,
+  "rootDir": "/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619"
+}
+      with custom config {}
+      and default (internal) stryker config {
+  "collectCoverage": false,
+  "verbose": false,
+  "notify": false,
+  "bail": false,
+  "reporters": []
+}
+19:42:21 (93362) DEBUG ChildProcessProxy Started ChildProcessTestRunnerWorker in worker process 5 with pid 93414 
+19:42:21 (93414) DEBUG PluginLoader Loading plugin @stryker-mutator/jest-runner
+19:42:21 (93414) DEBUG PluginLoader Loading plugin file:///Users/andrew/cs156/team02-s25-09/frontend/node_modules/@stryker-mutator/core/dist/src/reporters/index.js
+19:42:21 (93413) DEBUG PluginLoader Loading plugin @stryker-mutator/jest-runner
+19:42:21 (93413) DEBUG PluginLoader Loading plugin file:///Users/andrew/cs156/team02-s25-09/frontend/node_modules/@stryker-mutator/core/dist/src/reporters/index.js
+19:42:21 (93413) DEBUG ChildProcessProxyWorker Changing current working directory for this process to /Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619
+19:42:21 (93414) DEBUG ChildProcessProxyWorker Changing current working directory for this process to /Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619
+19:42:21 (93414) DEBUG jestTestAdapterFactory Detected Jest version 27.5.1
+19:42:21 (93413) DEBUG jestTestAdapterFactory Detected Jest version 27.5.1
+19:42:21 (93414) DEBUG JestTestRunner Running jest with --findRelatedTests flag. Set jest.enableFindRelatedTests to false to run all tests on every mutant.
+19:42:21 (93413) DEBUG JestTestRunner Running jest with --findRelatedTests flag. Set jest.enableFindRelatedTests to false to run all tests on every mutant.
+19:42:21 (93362) DEBUG ChildProcessProxy Started ChildProcessTestRunnerWorker in worker process 6 with pid 93417 
+19:42:21 (93413) DEBUG JestTestRunner Merging file-based config {
+  "roots": [
+    "<rootDir>/src"
+  ],
+  "collectCoverageFrom": [
+    "src/main/**/*.{js,jsx,ts,tsx}"
+  ],
+  "setupFiles": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-app-polyfill/jsdom.js"
+  ],
+  "setupFilesAfterEnv": [
+    "<rootDir>/src/setupTests.js"
+  ],
+  "testMatch": [
+    "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+    "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+  ],
+  "testEnvironment": "jsdom",
+  "transform": {
+    "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/babelTransform.js",
+    "^.+\\.css$": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/cssTransform.js",
+    "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/fileTransform.js"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+    "^.+\\.module\\.(css|sass|scss)$"
+  ],
+  "modulePaths": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src"
+  ],
+  "moduleNameMapper": {
+    "^react-native$": "react-native-web",
+    "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+    "^axios$": "axios/dist/node/axios.cjs"
+  },
+  "moduleFileExtensions": [
+    "web.js",
+    "js",
+    "web.ts",
+    "ts",
+    "web.tsx",
+    "tsx",
+    "json",
+    "web.jsx",
+    "jsx",
+    "node"
+  ],
+  "watchPlugins": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-watch-typeahead/build/file_name_plugin/plugin.js",
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-watch-typeahead/build/test_name_plugin/plugin.js"
+  ],
+  "resetMocks": true,
+  "rootDir": "/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619"
+}
+      with custom config {}
+      and default (internal) stryker config {
+  "collectCoverage": false,
+  "verbose": false,
+  "notify": false,
+  "bail": false,
+  "reporters": []
+}
+19:42:21 (93414) DEBUG JestTestRunner Merging file-based config {
+  "roots": [
+    "<rootDir>/src"
+  ],
+  "collectCoverageFrom": [
+    "src/main/**/*.{js,jsx,ts,tsx}"
+  ],
+  "setupFiles": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-app-polyfill/jsdom.js"
+  ],
+  "setupFilesAfterEnv": [
+    "<rootDir>/src/setupTests.js"
+  ],
+  "testMatch": [
+    "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+    "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+  ],
+  "testEnvironment": "jsdom",
+  "transform": {
+    "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/babelTransform.js",
+    "^.+\\.css$": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/cssTransform.js",
+    "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/fileTransform.js"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+    "^.+\\.module\\.(css|sass|scss)$"
+  ],
+  "modulePaths": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src"
+  ],
+  "moduleNameMapper": {
+    "^react-native$": "react-native-web",
+    "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+    "^axios$": "axios/dist/node/axios.cjs"
+  },
+  "moduleFileExtensions": [
+    "web.js",
+    "js",
+    "web.ts",
+    "ts",
+    "web.tsx",
+    "tsx",
+    "json",
+    "web.jsx",
+    "jsx",
+    "node"
+  ],
+  "watchPlugins": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-watch-typeahead/build/file_name_plugin/plugin.js",
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-watch-typeahead/build/test_name_plugin/plugin.js"
+  ],
+  "resetMocks": true,
+  "rootDir": "/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619"
+}
+      with custom config {}
+      and default (internal) stryker config {
+  "collectCoverage": false,
+  "verbose": false,
+  "notify": false,
+  "bail": false,
+  "reporters": []
+}
+19:42:21 (93417) DEBUG PluginLoader Loading plugin @stryker-mutator/jest-runner
+19:42:21 (93417) DEBUG PluginLoader Loading plugin file:///Users/andrew/cs156/team02-s25-09/frontend/node_modules/@stryker-mutator/core/dist/src/reporters/index.js
+19:42:21 (93417) DEBUG ChildProcessProxyWorker Changing current working directory for this process to /Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619
+19:42:21 (93417) DEBUG jestTestAdapterFactory Detected Jest version 27.5.1
+19:42:21 (93417) DEBUG JestTestRunner Running jest with --findRelatedTests flag. Set jest.enableFindRelatedTests to false to run all tests on every mutant.
+19:42:21 (93417) DEBUG JestTestRunner Merging file-based config {
+  "roots": [
+    "<rootDir>/src"
+  ],
+  "collectCoverageFrom": [
+    "src/main/**/*.{js,jsx,ts,tsx}"
+  ],
+  "setupFiles": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-app-polyfill/jsdom.js"
+  ],
+  "setupFilesAfterEnv": [
+    "<rootDir>/src/setupTests.js"
+  ],
+  "testMatch": [
+    "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+    "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+  ],
+  "testEnvironment": "jsdom",
+  "transform": {
+    "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/babelTransform.js",
+    "^.+\\.css$": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/cssTransform.js",
+    "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/react-scripts/config/jest/fileTransform.js"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+    "^.+\\.module\\.(css|sass|scss)$"
+  ],
+  "modulePaths": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src"
+  ],
+  "moduleNameMapper": {
+    "^react-native$": "react-native-web",
+    "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+    "^axios$": "axios/dist/node/axios.cjs"
+  },
+  "moduleFileExtensions": [
+    "web.js",
+    "js",
+    "web.ts",
+    "ts",
+    "web.tsx",
+    "tsx",
+    "json",
+    "web.jsx",
+    "jsx",
+    "node"
+  ],
+  "watchPlugins": [
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-watch-typeahead/build/file_name_plugin/plugin.js",
+    "/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-watch-typeahead/build/test_name_plugin/plugin.js"
+  ],
+  "resetMocks": true,
+  "rootDir": "/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619"
+}
+      with custom config {}
+      and default (internal) stryker config {
+  "collectCoverage": false,
+  "verbose": false,
+  "notify": false,
+  "bail": false,
+  "reporters": []
+}
+19:42:26 (93362) ERROR DryRunExecutor One or more tests failed in the initial test run:
+	RecommendationRequestTable tests renders empty table correctly
+		TestingLibraryElementError: Unable to find an element with the text: Id. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <table
+      class="table table-striped table-bordered table-hover"
+      role="table"
+    >
+      <thead>
+        <tr
+          data-testid="RecommendationRequestTable-header-group-0"
+          role="row"
+        >
+          <th
+            colspan="1"
+            data-testid="RecommendationRequestTable-header-id"
+            role="columnheader"
+            style="cursor: pointer;"
+            title="Toggle SortBy"
+          >
+            id
+            <span
+              data-testid="RecommendationRequestTable-header-id-sort-carets"
+            />
+          </th>
+          <th
+            colspan="1"
+            data-testid="RecommendationRequestTable-header-requesterEmail"
+            role="columnheader"
+            style="cursor: pointer;"
+            title="Toggle SortBy"
+          >
+            Requester's Email
+            <span
+              data-testid="RecommendationRequestTable-header-requesterEmail-sort-carets"
+            />
+          </th>
+          <th
+            colspan="1"
+            data-testid="RecommendationRequestTable-header-professorEmail"
+            role="columnheader"
+            style="cursor: pointer;"
+            title="Toggle SortBy"
+          >
+            Professor's Email
+            <span
+              data-testid="RecommendationRequestTable-header-professorEmail-sort-carets"
+            />
+          </th>
+          <th
+            colspan="1"
+            data-testid="RecommendationRequestTable-header-explanation"
+            role="columnheader"
+            style="cursor: pointer;"
+            title="Toggle SortBy"
+          >
+            Explanation
+            <span
+              data-testid="RecommendationRequestTable-header-explanation-sort-carets"
+            />
+          </th>
+          <th
+            colspan="1"
+            data-testid="RecommendationRequestTable-header-dateRequested"
+            role="columnheader"
+            style="cursor: pointer;"
+            title="Toggle SortBy"
+          >
+            Date Requested
+            <span
+              data-testid="RecommendationRequestTable-header-dateRequested-sort-carets"
+            />
+          </th>
+          <th
+            colspan="1"
+            data-testid="RecommendationRequestTable-header-dateNeeded"
+            role="columnheader"
+            style="cursor: pointer;"
+            title="Toggle SortBy"
+          >
+            Date Needed
+            <span
+              data-testid="RecommendationRequestTable-header-dateNeeded-sort-carets"
+            />
+          </th>
+          <th
+            colspan="1"
+            data-testid="RecommendationRequestTable-header-done"
+            role="columnheader"
+            style="cursor: pointer;"
+            title="Toggle SortBy"
+          >
+            Done
+            <span
+              data-testid="RecommendationRequestTable-header-done-sort-carets"
+            />
+          </th>
+          <th
+            colspan="1"
+            data-testid="RecommendationRequestTable-header-Edit"
+            role="columnheader"
+          >
+            Edit
+            <span
+              data-testid="RecommendationRequestTable-header-Edit-sort-carets"
+            />
+          </th>
+          <th
+            colspan="1"
+            data-testid="RecommendationRequestTable-header-Delete"
+            role="columnheader"
+          >
+            Delete
+            <span
+              data-testid="RecommendationRequestTable-header-Delete-sort-carets"
+            />
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        role="rowgroup"
+      />
+    </table>
+  </div>
+</body>
+    at Object.getElementError (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/@testing-library/dom/dist/config.js:37:19)
+    at /Users/andrew/cs156/team02-s25-09/frontend/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+    at /Users/andrew/cs156/team02-s25-09/frontend/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+    at getByText (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+    at forEach (/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/tests/components/RecommendationRequest/RecommendationRequestTable.test.js:40:30)
+    at Array.forEach (<anonymous>)
+    at Object.<anonymous> (/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/tests/components/RecommendationRequest/RecommendationRequestTable.test.js:39:22)
+    at Promise.then.completed (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/utils.js:391:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/utils.js:316:10)
+    at _callCircusTest (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:218:40)
+    at _runTest (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:155:3)
+    at _runTestsForDescribeBlock (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:66:9)
+    at _runTestsForDescribeBlock (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:60:9)
+    at run (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:170:21)
+    at jestAdapter (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:82:19)
+    at runTestInternal (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-runner/build/runTest.js:389:16)
+    at runTest (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-runner/build/runTest.js:475:34)
+	RecommendationRequestTable tests Has the expected column headers, content and buttons for admin user
+		TypeError: Cannot read properties of undefined (reading 'threeRecommendationRequests')
+    at Object.<anonymous> (/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/tests/components/RecommendationRequest/RecommendationRequestTable.test.js:58:94)
+    at Promise.then.completed (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/utils.js:391:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/utils.js:316:10)
+    at _callCircusTest (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:218:40)
+    at _runTest (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:155:3)
+    at _runTestsForDescribeBlock (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:66:9)
+    at _runTestsForDescribeBlock (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:60:9)
+    at run (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:170:21)
+    at jestAdapter (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:82:19)
+    at runTestInternal (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-runner/build/runTest.js:389:16)
+    at runTest (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-runner/build/runTest.js:475:34)
+	RecommendationRequestTable tests Has the expected column headers, content for ordinary user
+		TypeError: Cannot read properties of undefined (reading 'threeRecommendationRequests')
+    at Object.<anonymous> (/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/tests/components/RecommendationRequest/RecommendationRequestTable.test.js:111:94)
+    at Promise.then.completed (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/utils.js:391:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/utils.js:316:10)
+    at _callCircusTest (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:218:40)
+    at _runTest (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:155:3)
+    at _runTestsForDescribeBlock (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:66:9)
+    at _runTestsForDescribeBlock (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:60:9)
+    at run (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:170:21)
+    at jestAdapter (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:82:19)
+    at runTestInternal (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-runner/build/runTest.js:389:16)
+    at runTest (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-runner/build/runTest.js:475:34)
+	RecommendationRequestTable tests Edit button navigates to the edit page
+		TypeError: Cannot read properties of undefined (reading 'threeRecommendationRequests')
+    at Object.<anonymous> (/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/tests/components/RecommendationRequest/RecommendationRequestTable.test.js:158:94)
+    at Promise.then.completed (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/utils.js:391:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/utils.js:316:10)
+    at _callCircusTest (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:218:40)
+    at _runTest (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:155:3)
+    at _runTestsForDescribeBlock (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:66:9)
+    at _runTestsForDescribeBlock (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:60:9)
+    at run (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:170:21)
+    at jestAdapter (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:82:19)
+    at runTestInternal (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-runner/build/runTest.js:389:16)
+    at runTest (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-runner/build/runTest.js:475:34)
+	RecommendationRequestTable tests Delete button calls delete callback
+		TypeError: Cannot read properties of undefined (reading 'threeRecommendationRequests')
+    at Object.<anonymous> (/Users/andrew/cs156/team02-s25-09/frontend/.stryker-tmp/sandbox7154619/src/tests/components/RecommendationRequest/RecommendationRequestTable.test.js:186:94)
+    at Promise.then.completed (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/utils.js:391:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/utils.js:316:10)
+    at _callCircusTest (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:218:40)
+    at _runTest (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:155:3)
+    at _runTestsForDescribeBlock (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:66:9)
+    at _runTestsForDescribeBlock (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:60:9)
+    at run (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:170:21)
+    at jestAdapter (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:82:19)
+    at runTestInternal (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-runner/build/runTest.js:389:16)
+    at runTest (/Users/andrew/cs156/team02-s25-09/frontend/node_modules/jest-runner/build/runTest.js:475:34)
+19:42:26 (93362) DEBUG Stryker Not removing the temp dir because an error occurred
+19:42:26 (93362) ERROR Stryker There were failed tests in the initial test run.
+19:42:26 (93362) DEBUG ChildProcessProxy Disposing of worker process 93366
+19:42:26 (93362) DEBUG ChildProcessProxy Kill 93366
+19:42:26 (93362) DEBUG ChildProcessProxy Disposing of worker process 93417
+19:42:26 (93362) DEBUG ChildProcessProxy Disposing of worker process 93368
+19:42:26 (93362) DEBUG ChildProcessProxy Disposing of worker process 93367
+19:42:26 (93362) DEBUG ChildProcessProxy Disposing of worker process 93369
+19:42:26 (93362) DEBUG ChildProcessProxy Disposing of worker process 93414
+19:42:26 (93362) DEBUG ChildProcessProxy Disposing of worker process 93413
+19:42:26 (93362) DEBUG ChildProcessProxy Kill 93413
+19:42:26 (93362) DEBUG ChildProcessProxy Kill 93367
+19:42:26 (93362) DEBUG ChildProcessProxy Kill 93417
+19:42:26 (93362) DEBUG ChildProcessProxy Kill 93368
+19:42:26 (93362) DEBUG ChildProcessProxy Kill 93369
+19:42:26 (93362) DEBUG ChildProcessProxy Kill 93414
+19:42:27 (93362) DEBUG ChildProcessProxy Disposing of worker process 93365
+19:42:27 (93362) DEBUG ChildProcessProxy Kill 93365

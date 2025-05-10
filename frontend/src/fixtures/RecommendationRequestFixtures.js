@@ -11,7 +11,7 @@ const RecommendationRequestFixtures = {
   threeRecommendationRequests: [
     {
       id: 2,
-      requesterEmail: "ldelplaysa@ucsb.edu",
+      requesterEmail: "ldelplaya@ucsb.edu",
       professorEmail: "richert@ucsb.edu",
       explanation: "PhD CS Stanford",
       dateRequested: "2022-04-20T00:00:00.018Z",
