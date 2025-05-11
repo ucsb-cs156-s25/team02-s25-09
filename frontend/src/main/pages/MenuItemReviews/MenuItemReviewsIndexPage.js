@@ -26,7 +26,7 @@ export default function MenuItemReviewsIndexPage() {
       return (
         <Button
           variant="primary"
-          href="/menuitemreview/create"
+          href="/menuitemreviews/create"
           style={{ float: "right" }}
         >
           Create Menu Item Review
