@@ -25,7 +25,6 @@ export default function RecommendationRequestsEditPage({ storybook = false }) {
     },
   );
 
-
   const objectToAxiosPutParams = (recommendationrequests) => {
     // Ensure dates are properly formatted for the backend
     // Stryker disable next-line all
@@ -34,7 +33,7 @@ export default function RecommendationRequestsEditPage({ storybook = false }) {
       if (!dateString) return dateString;
       // If the date is already in ISO format, return it
       // Stryker disable next-line all
-      if (dateString.includes('T')) return dateString;
+      if (dateString.includes("T")) return dateString;
       // Otherwise, convert YYYY-MM-DD to ISO format with time
       const date = new Date(dateString);
       return date.toISOString();
@@ -49,17 +48,21 @@ export default function RecommendationRequestsEditPage({ storybook = false }) {
       data: {
         requesterEmail: recommendationrequests.requesterEmail,
         professorEmail: recommendationrequests.professorEmail,
-        explanation:    recommendationrequests.explanation,
-        dateRequested:  formatDate(recommendationrequests.dateRequested),
-        dateNeeded:     formatDate(recommendationrequests.dateNeeded),
-        // Stryker disable next-line all : don't test 
-        done:           recommendationrequests.done === "true" || recommendationrequests.done === true,
+        explanation: recommendationrequests.explanation,
+        dateRequested: formatDate(recommendationrequests.dateRequested),
+        dateNeeded: formatDate(recommendationrequests.dateNeeded),
+        // Stryker disable next-line all : don't test
+        done:
+          recommendationrequests.done === "true" ||
+          recommendationrequests.done === true,
       },
     };
   };
 
   const onSuccess = (recommendationrequests) => {
-    toast(`Recommendation Request Updated - id: ${recommendationrequests.id} requesterEmail: ${recommendationrequests.requesterEmail}`);
+    toast(
+      `Recommendation Request Updated - id: ${recommendationrequests.id} requesterEmail: ${recommendationrequests.requesterEmail}`,
+    );
   };
 
   const mutation = useBackendMutation(
