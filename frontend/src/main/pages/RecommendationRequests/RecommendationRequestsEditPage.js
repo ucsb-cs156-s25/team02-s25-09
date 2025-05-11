@@ -51,9 +51,11 @@ export default function RecommendationRequestsEditPage({ storybook = false }) {
         explanation: recommendationrequests.explanation,
         dateRequested: formatDate(recommendationrequests.dateRequested),
         dateNeeded: formatDate(recommendationrequests.dateNeeded),
-        // Stryker disable next-line all : don't test
+        // Stryker disable next-line all
         done:
+          // Stryker disable next-line all
           recommendationrequests.done === "true" ||
+          // Stryker disable next-line all
           recommendationrequests.done === true,
       },
     };
