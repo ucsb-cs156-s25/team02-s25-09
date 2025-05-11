@@ -1,54 +1,54 @@
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 import { useParams } from "react-router-dom";
-import ArticleForm from "main/components/Articles/ArticlesForm";
+import UCSBDiningCommonsMenuItemForm from "main/components/UCSBDiningCommonsMenuItems/UCSBDiningCommonsMenuItemForm";
 import { Navigate } from "react-router-dom";
 import { useBackend, useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 
-export default function ArticlesEditPage({ storybook = false }) {
+export default function UCSBDiningCommonsMenuItemEditPage({
+  storybook = false,
+}) {
   let { id } = useParams();
 
   const {
-    data: article,
+    data: item,
     _error,
     _status,
   } = useBackend(
     // Stryker disable next-line all : don't test internal caching of React Query
-    [`/api/articles?id=${id}`],
+    [`/api/ucsbdiningcommonsmenuitem?id=${id}`],
     {
-      // Stryker disable next-line all : GET is the default, so changing this to "" doesn't introduce a bug
+      // Stryker disable next-line all : GET is the default, so mutating this to "" doesn't introduce a bug
       method: "GET",
-      url: `/api/articles`,
+      url: `/api/ucsbdiningcommonsmenuitem`,
       params: {
         id,
       },
     },
   );
 
-  const objectToAxiosPutParams = (article) => ({
-    url: "/api/articles",
+  const objectToAxiosPutParams = (item) => ({
+    url: "/api/ucsbdiningcommonsmenuitem",
     method: "PUT",
     params: {
-      id: article.id,
+      id: item.id,
     },
     data: {
-      title: article.title,
-      url: article.url,
-      explanation: article.explanation,
-      email: article.email,
-      dateAdded: article.dateAdded,
+      diningCommonsCode: item.diningCommonsCode,
+      name: item.name,
+      station: item.station,
     },
   });
 
-  const onSuccess = (article) => {
-    toast(`Article Updated - id: ${article.id} title: ${article.title}`);
+  const onSuccess = (item) => {
+    toast(`Item Updated - id: ${item.id} name: ${item.name}`);
   };
 
   const mutation = useBackendMutation(
     objectToAxiosPutParams,
     { onSuccess },
     // Stryker disable next-line all : hard to set up test for caching
-    [`/api/articles?id=${id}`],
+    [`/api/ucsbdiningcommonsmenuitem?id=${id}`],
   );
 
   const { isSuccess } = mutation;
@@ -58,18 +58,18 @@ export default function ArticlesEditPage({ storybook = false }) {
   };
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/articles" />;
+    return <Navigate to="/ucsbdiningcommonsmenuitem" />;
   }
 
   return (
     <BasicLayout>
       <div className="pt-2">
-        <h1>Edit Article</h1>
-        {article && (
-          <ArticleForm
-            initialContents={article}
+        <h1>Edit Item</h1>
+        {item && (
+          <UCSBDiningCommonsMenuItemForm
             submitAction={onSubmit}
-            buttonLabel="Update"
+            buttonLabel={"Update"}
+            initialContents={item}
           />
         )}
       </div>
