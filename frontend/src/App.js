@@ -170,7 +170,7 @@ function App() {
           <>
             <Route
               exact
-              path="/menuitemreview/edit/:id"
+              path="/menuitemreviews/edit/:id"
               element={<MenuItemReviewsEditPage />}
             />
             <Route
