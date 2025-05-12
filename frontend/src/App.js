@@ -166,6 +166,7 @@ function App() {
               exact
               path="/helprequests"
               element={<HelpRequestsIndexPage />}
+            />
             <Route
               exact
               path="/menuitemreviews"
@@ -184,6 +185,7 @@ function App() {
               exact
               path="/helprequests/create"
               element={<HelpRequestsCreatePage />}
+            />
             <Route
               exact
               path="/menuitemreivews/edit/:id"
