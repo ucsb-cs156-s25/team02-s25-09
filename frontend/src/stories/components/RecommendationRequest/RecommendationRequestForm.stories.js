@@ -1,9 +1,9 @@
 import React from "react";
-import RecommendationRequestForm from "main/components/RecommendationRequest/RecommendationRequestForm";
+import RecommendationRequestForm from "main/components/RecommendationRequests/RecommendationRequestForm";
 import { RecommendationRequestFixtures } from "fixtures/RecommendationRequestFixtures";
 
 export default {
-  title: "components/RecommendationRequest/RecommendationRequestForm",
+  title: "components/RecommendationRequests/RecommendationRequestForm",
   component: RecommendationRequestForm,
 };
 
