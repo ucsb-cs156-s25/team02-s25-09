@@ -3,16 +3,16 @@ import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { http, HttpResponse } from "msw";
 
-import HelpRequestsCreatePage from "main/pages/HelpRequests/HelpRequestsCreatePage";
-
+import HelpRequestsEditPage from "main/pages/HelpRequests/HelpRequestsEditPage";
 import { helpRequestFixtures } from "fixtures/helpRequestFixtures";
 
+
 export default {
-  title: "pages/HelpRequests/HelpRequestsCreatePage",
-  component: HelpRequestsCreatePage,
+  title: "pages/HelpRequests/HelpRequestsEditPage",
+  component: HelpRequestsEditPage,
 };
 
-const Template = () => <HelpRequestsCreatePage storybook={true} />;
+const Template = () => <HelpRequestsEditPage storybook={true} />;
 
 export const Default = Template.bind({});
 Default.parameters = {
@@ -27,7 +27,16 @@ Default.parameters = {
         status: 200,
       });
     }),
-    http.post("/api/helprequests/post", () => {
+    http.get("/api/helprequests", () => {
+      return HttpResponse.json(helpRequestFixtures.threeRequests[0], {
+        status: 200,
+      });
+    }),
+    http.put("/api/helprequests", () => {
+      return HttpResponse.json(helpRequestFixtures.oneRequest, { status: 200 });
+    }),
+    http.put("/api/helprequests", (req) => {
+      window.alert("PUT: " + req.url + " and body: " + req.body);
       return HttpResponse.json(helpRequestFixtures.oneRequest, { status: 200 });
     }),
   ],
