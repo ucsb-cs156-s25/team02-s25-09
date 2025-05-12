@@ -12,7 +12,7 @@ export default function HelpRequestsCreatePage({ storybook = false }) {
       requesterEmail: helprequest.requesterEmail,
       teamId: helprequest.teamId,
       tableOrBreakoutRoom: helprequest.tableOrBreakoutRoom,
-      requestTime: helprequest.requestTime.split(".")[0],
+      requestTime: helprequest.requestTime,
       explanation: helprequest.explanation,
       solved: helprequest.solved,
     },
