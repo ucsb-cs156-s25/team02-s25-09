@@ -22,6 +22,9 @@ import UCSBOrganizationEditPage from "main/pages/UCSBOrganization/UCSBOrganizati
 import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
 import ArticlesCreatePage from "main/pages/Articles/ArticlesCreatePage";
 import ArticlesEditPage from "main/pages/Articles/ArticlesEditPage";
+import HelpRequestsIndexPage from "main/pages/HelpRequests/HelpRequestsIndexPage";
+import HelpRequestsCreatePage from "main/pages/HelpRequests/HelpRequestsCreatePage";
+import HelpRequestsEditPage from "main/pages/HelpRequests/HelpRequestsEditPage";
 
 import MenuItemReviewsIndexPage from "main/pages/MenuItemReviews/MenuItemReviewsIndexPage";
 import MenuItemReviewsCreatePage from "main/pages/MenuItemReviews/MenuItemReviewsCreatePage";
@@ -161,13 +164,32 @@ function App() {
           <>
             <Route
               exact
-              path="/menuitemreviews"
-              element={<MenuItemReviewsIndexPage />}
+              path="/helprequests"
+              element={<HelpRequestsIndexPage />}
             />
           </>
         )}
         {hasRole(currentUser, "ROLE_ADMIN") && (
           <>
+            <Route
+              exact
+              path="/helprequests/edit/:id"
+              element={<HelpRequestsEditPage />}
+            />
+            <Route
+              exact
+              path="/helprequests/create"
+              element={<HelpRequestsCreatePage />}
+            />
+          </>
+        )}
+        {hasRole(currentUser, "ROLE_ADMIN") && (
+          <>
+            <Route
+              exact
+              path="/menuitemreviews"
+              element={<MenuItemReviewsIndexPage />}
+            />
             <Route
               exact
               path="/menuitemreivews/edit/:id"
