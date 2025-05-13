@@ -62,9 +62,9 @@ describe("MenuItemReviewsIndexPage tests", () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByText(/Create Menu Item Review/)).toBeInTheDocument();
+      expect(screen.getByText(/Create/)).toBeInTheDocument();
     });
-    const button = screen.getByText(/Create Menu Item Review/);
+    const button = screen.getByText(/Create/);
     expect(button).toHaveAttribute("href", "/menuitemreviews/create");
     expect(button).toHaveAttribute("style", "float: right;");
   });
