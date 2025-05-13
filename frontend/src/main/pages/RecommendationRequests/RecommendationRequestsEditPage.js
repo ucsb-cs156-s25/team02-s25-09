@@ -1,6 +1,6 @@
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 
-export default function MenuItemReviewsEditPage() {
+export default function RecommendationRequestsEditPage() {
   // Stryker disable all : placeholder for future implementation
   return (
     <BasicLayout>

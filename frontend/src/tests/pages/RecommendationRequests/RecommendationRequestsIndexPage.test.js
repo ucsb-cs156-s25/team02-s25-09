@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import MenuItemReviewsEditPage from "main/pages/MenuItemReviews/MenuItemReviewsEditPage";
+import RecommendationRequestsIndexPage from "main/pages/RecommendationRequests/RecommendationRequestsIndexPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
@@ -8,7 +8,7 @@ import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 
-describe("MenuItemReviewsEditPage tests", () => {
+describe("RecommendtionRequestsIndex tests", () => {
   const axiosMock = new AxiosMockAdapter(axios);
 
   const setupUserOnly = () => {
@@ -29,15 +29,22 @@ describe("MenuItemReviewsEditPage tests", () => {
     setupUserOnly();
 
     // act
+
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <MenuItemReviewsEditPage />
+          <RecommendationRequestsIndexPage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
 
+    await screen.findByText("Index page not yet implemented");
+
     // assert
-    await screen.findByText("Edit page not yet implemented");
+    expect(
+      screen.getByText("Index page not yet implemented"),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Create")).toBeInTheDocument();
+    expect(screen.getByText("Edit")).toBeInTheDocument();
   });
 });

@@ -1,17 +1,17 @@
 import React from "react";
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { menuItemReviewFixtures } from "fixtures/menuItemReviewFixtures";
+import { helpRequestFixtures } from "fixtures/helpRequestFixtures";
 import { http, HttpResponse } from "msw";
 
-import MenuItemReviewsIndexPage from "main/pages/MenuItemReviews/MenuItemReviewsIndexPage";
+import HelpRequestsIndexPage from "main/pages/HelpRequests/HelpRequestsIndexPage";
 
 export default {
-  title: "pages/MenuItemReviews/MenuItemReviewsIndexPage",
-  component: MenuItemReviewsIndexPage,
+  title: "pages/HelpRequests/HelpRequestsIndexPage",
+  component: HelpRequestsIndexPage,
 };
 
-const Template = () => <MenuItemReviewsIndexPage storybook={true} />;
+const Template = () => <HelpRequestsIndexPage storybook={true} />;
 
 export const Empty = Template.bind({});
 Empty.parameters = {
@@ -26,7 +26,7 @@ Empty.parameters = {
         status: 200,
       });
     }),
-    http.get("/api/menuitemreview/all", () => {
+    http.get("/api/helprequests/all", () => {
       return HttpResponse.json([], { status: 200 });
     }),
   ],
@@ -42,8 +42,8 @@ ThreeItemsOrdinaryUser.parameters = {
     http.get("/api/systemInfo", () => {
       return HttpResponse.json(systemInfoFixtures.showingNeither);
     }),
-    http.get("/api/menuitemreview/all", () => {
-      return HttpResponse.json(menuItemReviewFixtures.threeMenuItemReviews);
+    http.get("/api/helprequests/all", () => {
+      return HttpResponse.json(helpRequestFixtures.threeRequests);
     }),
   ],
 };
@@ -58,12 +58,12 @@ ThreeItemsAdminUser.parameters = {
     http.get("/api/systemInfo", () => {
       return HttpResponse.json(systemInfoFixtures.showingNeither);
     }),
-    http.get("/api/menuitemreview/all", () => {
-      return HttpResponse.json(menuItemReviewFixtures.threeMenuItemReviews);
+    http.get("/api/helprequests/all", () => {
+      return HttpResponse.json(helpRequestFixtures.threeRequests);
     }),
-    http.delete("/api/menuitemreview", () => {
+    http.delete("/api/helprequests", () => {
       return HttpResponse.json(
-        { message: "Menu Item Review deleted successfully" },
+        { message: "Help Request deleted successfully" },
         { status: 200 },
       );
     }),
