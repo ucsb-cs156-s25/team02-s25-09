@@ -31,7 +31,7 @@ const helpRequestFixtures = {
       id: 3,
       requesterEmail: "nointernetaccess@ucsb.edu",
       teamId: "s25-5pm-9",
-      tableOrBreakoutRoom: "9",
+      tableOrBreakoutRoom: "3",
       requestTime: "2025-05-01T16:26:21",
       explanation: "Necesito Ayuda",
       solved: false,
