@@ -3,15 +3,15 @@ import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { http, HttpResponse } from "msw";
 
-import MenuItemReviewsEditPage from "main/pages/MenuItemReviews/MenuItemReviewsEditPage";
-import { menuItemReviewFixtures } from "fixtures/menuItemReviewFixtures";
+import HelpRequestsEditPage from "main/pages/HelpRequests/HelpRequestsEditPage";
+import { helpRequestFixtures } from "fixtures/helpRequestFixtures";
 
 export default {
-  title: "pages/MenuItemReviews/MenuItemReviewsEditPage",
-  component: MenuItemReviewsEditPage,
+  title: "pages/HelpRequests/HelpRequestsEditPage",
+  component: HelpRequestsEditPage,
 };
 
-const Template = () => <MenuItemReviewsEditPage storybook={true} />;
+const Template = () => <HelpRequestsEditPage storybook={true} />;
 
 export const Default = Template.bind({});
 Default.parameters = {
@@ -26,17 +26,17 @@ Default.parameters = {
         status: 200,
       });
     }),
-    http.get("/api/menuitemreview", () => {
-      return HttpResponse.json(menuItemReviewFixtures.threeMenuItemReviews, {
+    http.get("/api/helprequests", () => {
+      return HttpResponse.json(helpRequestFixtures.threeRequests[0], {
         status: 200,
       });
     }),
-    http.put("/api/menuitemreview", () => {
-      return HttpResponse.json({}, { status: 200 });
+    http.put("/api/helprequests", () => {
+      return HttpResponse.json(helpRequestFixtures.oneRequest, { status: 200 });
     }),
-    http.put("/api/menuitemreview", (req) => {
+    http.put("/api/helprequests", (req) => {
       window.alert("PUT: " + req.url + " and body: " + req.body);
-      return HttpResponse.json({}, { status: 200 });
+      return HttpResponse.json(helpRequestFixtures.oneRequest, { status: 200 });
     }),
   ],
 };

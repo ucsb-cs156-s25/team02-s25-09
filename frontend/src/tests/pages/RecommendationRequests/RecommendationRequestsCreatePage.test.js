@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import MenuItemReviewsEditPage from "main/pages/MenuItemReviews/MenuItemReviewsEditPage";
+import RecommendationRequestsCreatePage from "main/pages/RecommendationRequests/RecommendationRequestsCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
@@ -8,7 +8,7 @@ import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 
-describe("MenuItemReviewsEditPage tests", () => {
+describe("RecommendationRequestsCreatePage tests", () => {
   const axiosMock = new AxiosMockAdapter(axios);
 
   const setupUserOnly = () => {
@@ -32,12 +32,13 @@ describe("MenuItemReviewsEditPage tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <MenuItemReviewsEditPage />
+          <RecommendationRequestsCreatePage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
 
     // assert
-    await screen.findByText("Edit page not yet implemented");
+
+    await screen.findByText("Create page not yet implemented");
   });
 });
