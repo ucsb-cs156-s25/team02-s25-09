@@ -194,11 +194,6 @@ function App() {
               path="/helprequests"
               element={<HelpRequestsIndexPage />}
             />
-            <Route
-              exact
-              path="/menuitemreviews"
-              element={<MenuItemReviewsIndexPage />}
-            />
           </>
         )}
         {hasRole(currentUser, "ROLE_ADMIN") && (
@@ -213,15 +208,14 @@ function App() {
               path="/helprequests/create"
               element={<HelpRequestsCreatePage />}
             />
+          </>
+        )}
+        {hasRole(currentUser, "ROLE_USER") && (
+          <>
             <Route
               exact
-              path="/menuitemreivews/edit/:id"
-              element={<MenuItemReviewsEditPage />}
-            />
-            <Route
-              exact
-              path="/menuitemreviews/create"
-              element={<MenuItemReviewsCreatePage />}
+              path="/menuitemreviews"
+              element={<MenuItemReviewsIndexPage />}
             />
           </>
         )}
@@ -229,12 +223,7 @@ function App() {
           <>
             <Route
               exact
-              path="/menuitemreviews"
-              element={<MenuItemReviewsIndexPage />}
-            />
-            <Route
-              exact
-              path="/menuitemreivews/edit/:id"
+              path="/menuitemreview/edit/:id"
               element={<MenuItemReviewsEditPage />}
             />
             <Route
