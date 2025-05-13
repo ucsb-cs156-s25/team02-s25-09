@@ -11,10 +11,6 @@ import RestaurantIndexPage from "main/pages/Restaurants/RestaurantIndexPage";
 import RestaurantCreatePage from "main/pages/Restaurants/RestaurantCreatePage";
 import RestaurantEditPage from "main/pages/Restaurants/RestaurantEditPage";
 
-import RecommendationRequestsIndexPage from "main/pages/RecommendationRequests/RecommendationRequestsIndexPage";
-import RecommendationRequestsCreatePage from "main/pages/RecommendationRequests/RecommendationRequestsCreatePage";
-import RecommendationRequestsEditPage from "main/pages/RecommendationRequests/RecommendationRequestsEditPage";
-
 import UCSBDiningCommonsMenuItemIndexPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemIndexPage";
 import UCSBDiningCommonsMenuItemCreatePage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemCreatePage";
 import UCSBDiningCommonsMenuItemEditPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemEditPage";
@@ -26,9 +22,6 @@ import UCSBOrganizationEditPage from "main/pages/UCSBOrganization/UCSBOrganizati
 import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
 import ArticlesCreatePage from "main/pages/Articles/ArticlesCreatePage";
 import ArticlesEditPage from "main/pages/Articles/ArticlesEditPage";
-import HelpRequestsIndexPage from "main/pages/HelpRequests/HelpRequestsIndexPage";
-import HelpRequestsCreatePage from "main/pages/HelpRequests/HelpRequestsCreatePage";
-import HelpRequestsEditPage from "main/pages/HelpRequests/HelpRequestsEditPage";
 
 import MenuItemReviewsIndexPage from "main/pages/MenuItemReviews/MenuItemReviewsIndexPage";
 import MenuItemReviewsCreatePage from "main/pages/MenuItemReviews/MenuItemReviewsCreatePage";
@@ -89,30 +82,6 @@ function App() {
               exact
               path="/articles/create"
               element={<ArticlesCreatePage />}
-            />
-          </>
-        )}
-
-        {hasRole(currentUser, "ROLE_USER") && (
-          <>
-            <Route
-              exact
-              path="/recommendationrequests"
-              element={<RecommendationRequestsIndexPage />}
-            />
-          </>
-        )}
-        {hasRole(currentUser, "ROLE_ADMIN") && (
-          <>
-            <Route
-              exact
-              path="/recommendationrequests/edit/:id"
-              element={<RecommendationRequestsEditPage />}
-            />
-            <Route
-              exact
-              path="/recommendationrequests/create"
-              element={<RecommendationRequestsCreatePage />}
             />
           </>
         )}
@@ -191,11 +160,6 @@ function App() {
           <>
             <Route
               exact
-              path="/helprequests"
-              element={<HelpRequestsIndexPage />}
-            />
-            <Route
-              exact
               path="/menuitemreviews"
               element={<MenuItemReviewsIndexPage />}
             />
@@ -205,36 +169,7 @@ function App() {
           <>
             <Route
               exact
-              path="/helprequests/edit/:id"
-              element={<HelpRequestsEditPage />}
-            />
-            <Route
-              exact
-              path="/helprequests/create"
-              element={<HelpRequestsCreatePage />}
-            />
-            <Route
-              exact
-              path="/menuitemreivews/edit/:id"
-              element={<MenuItemReviewsEditPage />}
-            />
-            <Route
-              exact
-              path="/menuitemreviews/create"
-              element={<MenuItemReviewsCreatePage />}
-            />
-          </>
-        )}
-        {hasRole(currentUser, "ROLE_ADMIN") && (
-          <>
-            <Route
-              exact
-              path="/menuitemreviews"
-              element={<MenuItemReviewsIndexPage />}
-            />
-            <Route
-              exact
-              path="/menuitemreivews/edit/:id"
+              path="/menuitemreview/edit/:id"
               element={<MenuItemReviewsEditPage />}
             />
             <Route
