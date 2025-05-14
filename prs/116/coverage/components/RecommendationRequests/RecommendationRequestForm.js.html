@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.55% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/9</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -247,12 +247,13 @@
 <a name='L182'></a><a href='#L182'>182</a>
 <a name='L183'></a><a href='#L183'>183</a>
 <a name='L184'></a><a href='#L184'>184</a>
-<a name='L185'></a><a href='#L185'>185</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -261,7 +262,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -275,19 +276,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -422,7 +423,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -435,8 +437,8 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >removeZ(</span>myString) {
-<span class="cstat-no" title="statement not covered" >  return myString.replace("Z", "");</span>
+export function removeZ(myString) {
+  return myString.replace("Z", "");
 }
 &nbsp;
 function RecommendationRequestForm({
@@ -446,7 +448,7 @@ function RecommendationRequestForm({
 }) {
   // Stryker disable all
   const defaultValues = initialContents
-    ? <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+    ? {
         ...initialContents,
         dateRequested: removeZ(initialContents.dateRequested),
         dateNeeded: removeZ(initialContents.dateNeeded),
@@ -474,7 +476,7 @@ function RecommendationRequestForm({
   return (
     &lt;Form onSubmit={handleSubmit(submitAction)}&gt;
       {initialContents &amp;&amp; (
-<span class="branch-1 cbranch-no" title="branch not covered" >        &lt;Form.Group className="mb-3"&gt;</span>
+        &lt;Form.Group className="mb-3"&gt;
           &lt;Form.Label htmlFor="id"&gt;Id&lt;/Form.Label&gt;
           &lt;Form.Control
             data-testid={testIdPrefix + "-id"}
@@ -560,7 +562,7 @@ function RecommendationRequestForm({
           })}
         /&gt;
         &lt;Form.Control.Feedback type="invalid"&gt;
-          {errors.dateRequested &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >"Date requested is required."}</span>
+          {errors.dateRequested &amp;&amp; "Date requested is required."}
         &lt;/Form.Control.Feedback&gt;
       &lt;/Form.Group&gt;
 &nbsp;
@@ -577,7 +579,7 @@ function RecommendationRequestForm({
           })}
         /&gt;
         &lt;Form.Control.Feedback type="invalid"&gt;
-          {errors.dateNeeded &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >"Date needed is required."}</span>
+          {errors.dateNeeded &amp;&amp; "Date needed is required."}
         &lt;/Form.Control.Feedback&gt;
       &lt;/Form.Group&gt;
 &nbsp;
@@ -606,7 +608,7 @@ function RecommendationRequestForm({
       &lt;/Button&gt;
       &lt;Button
         variant="Secondary"
-        onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigate(-1)}</span> // Likewise to navigate, it's the 'back' button
+        onClick={() =&gt; navigate(-1)} // Likewise to navigate, it's the 'back' button
         data-testid={testIdPrefix + "-cancel"}
       &gt;
         Cancel
@@ -615,14 +617,15 @@ function RecommendationRequestForm({
   );
 }
 &nbsp;
-export default RecommendationRequestForm;</pre></td></tr></table></pre>
+export default RecommendationRequestForm;
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-14T00:10:10.683Z
+                at 2025-05-14T00:13:40.130Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
