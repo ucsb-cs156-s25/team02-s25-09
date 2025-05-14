@@ -80,7 +80,6 @@ describe("RecommendationRequestsCreatePage tests", () => {
       .onPost("/api/recommendationrequests/post")
       .reply(202, recommendationrequest);
 
-
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
@@ -145,6 +144,5 @@ describe("RecommendationRequestsCreatePage tests", () => {
     expect(mockNavigate).toHaveBeenCalledWith({
       to: "/recommendationrequests",
     });
-
   });
 });

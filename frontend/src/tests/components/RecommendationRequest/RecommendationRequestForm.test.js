@@ -220,4 +220,3 @@ describe("RecommendationRequestForm tests", () => {
     });
   });
 });
-

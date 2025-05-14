@@ -50,7 +50,6 @@ export default function RecommendationRequestsCreatePage({
       <div className="pt-2">
         <h1>Create New Recommendation Request</h1>
         <RecommendationRequestForm submitAction={onSubmit} />
-
       </div>
     </BasicLayout>
   );
