@@ -37,6 +37,7 @@ describe("RecommendationRequestsCreatePage tests", () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+
     axiosMock.reset();
     axiosMock.resetHistory();
     axiosMock
@@ -78,6 +79,7 @@ describe("RecommendationRequestsCreatePage tests", () => {
     axiosMock
       .onPost("/api/recommendationrequests/post")
       .reply(202, recommendationrequest);
+
 
     render(
       <QueryClientProvider client={queryClient}>
@@ -143,5 +145,6 @@ describe("RecommendationRequestsCreatePage tests", () => {
     expect(mockNavigate).toHaveBeenCalledWith({
       to: "/recommendationrequests",
     });
+
   });
 });
