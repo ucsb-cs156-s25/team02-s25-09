@@ -19,7 +19,7 @@ Deployments:
 Remember though, that in spite of these initial  assignments, it is still
 a team project.  Please help other team members to finish their work
 after completing your own.
-
+ 
 # Versions
 * Java: 21
 * node: 22.14.0
