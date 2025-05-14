@@ -30,6 +30,8 @@ import edu.ucsb.cs156.example.services.CurrentUserService;
 import edu.ucsb.cs156.example.services.GrantedAuthoritiesService;
 import edu.ucsb.cs156.example.testconfig.TestConfig;
 
+import java.time.LocalDateTime;
+
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -64,51 +66,21 @@ public class MenuItemReviewsIT {
 
                 MenuItemReview menuitemreview = MenuItemReview.builder()
                                 .itemId(5)
-                                .reviewerEmail("jasonzhao@ucsb.edu")
+                                .reviewerEmail("jasonz2005@gmail.com")
                                 .stars(5)
                                 .dateReviewed(ldt1)
-                                .comments("No comments")
-                                .build();         
+                                .comments("no comments")
+                                .build();
+                                
                 menuItemReviewRepository.save(menuitemreview);
-
 
                 // act
                 MvcResult response = mockMvc.perform(get("/api/menuitemreview?id=1"))
                                 .andExpect(status().isOk()).andReturn();
-                
-                menuitemreview.setId(id:1L);
 
                 // assert
                 String expectedJson = mapper.writeValueAsString(menuitemreview);
                 String responseString = response.getResponse().getContentAsString();
                 assertEquals(expectedJson, responseString);
         }
-
-        // @WithMockUser(roles = { "ADMIN", "USER" })
-        // @Test
-        // public void an_admin_user_can_post_a_new_menuitemreview() throws Exception {
-        //         // arrange
-
-        //         LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
-
-
-        //         MenuItemReview menuitemreview1 = MenuItemReview.builder()
-        //                         .itemId(5)
-        //                         .reviewerEmail("jasonzhao@ucsb.edu")
-        //                         .stars(5)
-        //                         .dateReviewed(ldt1)
-        //                         .comments("No comments")
-        //                         .build();   
-
-        //         // act
-        //         MvcResult response = mockMvc.perform(
-        //                         post("/api/menuitemreview/post?name=Chipotle&description=Mexican")
-        //                                         .with(csrf()))
-        //                         .andExpect(status().isOk()).andReturn();
-
-        //         // assert
-        //         String expectedJson = mapper.writeValueAsString(menuitemreview1);
-        //         String responseString = response.getResponse().getContentAsString();
-        //         assertEquals(expectedJson, responseString);
-        // }
 }
